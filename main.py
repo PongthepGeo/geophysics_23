@@ -10,6 +10,7 @@ chapters = {
     "Introduction": "intro.html",
     "Gravity": "gravity.html",
     "Electrical Resistivity Tomography (ERT)": "resis.html",
+    "Seismic Exploration": "seismic.html",
     "Ground Penetrating Radar": "GPR.html"
 }
     # "Electrical resistivity tomography (ERT)": "resis.html"
