@@ -24,5 +24,3 @@ if chapter_selection == "Cover Page":
 else:
     chapter_content = load_chapter(chapters[chapter_selection])
     st.markdown(chapter_content, unsafe_allow_html=True)
-
-sdssdds

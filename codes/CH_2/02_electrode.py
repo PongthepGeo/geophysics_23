@@ -20,6 +20,5 @@ rho = 1.0
 # Calculate the potential for the entire grid
 V = U.calculate_potential(grid_x, grid_y, x_source, y_source, I, rho)
 U.plot_contours(grid_x, grid_y, V)
-ddddd
 
 #-----------------------------------------------------------------------------------------#
