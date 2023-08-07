@@ -6,7 +6,7 @@ def load_chapter(chapter_file):
         return file.read()
 
 chapters = {
-    "Cover Page": "cover.png",
+    "Cover Page": "cover.jpg",
     "Introduction": "intro.html",
     "Gravity": "gravity.html",
     "Electrical Resistivity Tomography (ERT)": "resis.html",
