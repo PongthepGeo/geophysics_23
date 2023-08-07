@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>
+    Gravity Exploration in Geophysics
+</h2>
+
+<div style="padding: 20px 0;">
+    <img src="https://drive.google.com/uc?id=1HzyOZ5jW2GRcrzYmUE4Mr19awqFX-hTf"
+    style="max-width:25%;">
+</div>
+
+<h3>1) Gravitation</h3>
+<p>
+	Please cite
+
+	Lowrie, W. (2007). Gravity, the figure of the Earth and geodynamics. In Fundamentals of Geophysics (pp. 43-120). Cambridge: Cambridge University Press. doi:10.1017/CBO9780511807107.003
+</p>
+
+<h4>1.1) The Law of Universal Gravitation</h4>
+<p>
+Sir Isaac Newton (1642–1727) was born in the same year
+in which Galileo died. Unlike Galileo, who relished
+debate, Newton was a retiring person and avoided con-
+frontation. His modesty is apparent in a letter written in
+1675 to his colleague Robert Hooke, famous for his exper-
+iments on elasticity. In this letter Newton made the
+famous disclaimer “if I have seen further (than you and
+Descartes) it is by standing upon the shoulders of
+Giants.” In modern terms Newton would be regarded as a
+theoretical physicist. He had an outstanding ability to
+synthesize experimental results and incorporate them
+into his own theories. Faced with the need for a more
+powerful technique of mathematical analysis than existed
+at the time, he invented diﬀerential and integral calculus,
+for which he is credited equally with Gottfried Wilhelm
+von Leibnitz (1646–1716) who discovered the same
+method independently. Newton was able to resolve many
+issues by formulating logical thought experiments; an
+example is his prediction that the shape of the Earth is an
+oblate ellipsoid. He was one of the most outstanding syn-
+thesizers of observations in scientific history, which is
+implicit in his letter to Hooke. His three-volume book
+Philosophiae Naturalis Principia Mathematica, published
+in 1687, ranks as the greatest of all scientific texts. The
+first volume of the Principia contains Newton’s famous
+Laws of Motion, the third volume handles the Law of
+Universal Gravitation.
+
+The first two laws of motion are generalizations from
+Galileo’s results. As a corollary Newton applied his laws
+of motion to demonstrate that forces must be added as
+vectors and showed how to do this geometrically with a
+parallelogram. The second law of motion states that the
+rate of change of momentum of a mass is proportional
+to the force acting upon it and takes place in the direction
+of the force. For the case of constant mass, this law serves
+as the definition of force $\mathbf{F}$ in terms of the acceleration
+$\mathbf{a}$ given to a mass $m$:
+
+$$
+\begin{align*}
+{\color{green}\mathbf{F}} = m{\color{green}\mathbf{a}} \tag{1}
+\end{align*}
+$$
+<div id="eq1"></div>
+
+The unit of force in the SI system of units is the
+newton $(N)$. It is defined as the force that gives a mass of
+one kilogram $(1\ kg)$ an acceleration of $1\ ms^2$.
+His celebrated observation of a falling apple may be a
+legend, but Newton’s genius lay in recognizing that the
+type of gravitational field that caused the apple to fall was
+the same type that served to hold the Moon in its orbit
+around the Earth, the planets in their orbits around the
+Sun, and that acted between minute particles characterized
+only by their masses. If consider the Earth and falling apple as two particles, or point
+masses $m$ and $M$ separated by a distance $r$, we
+get for the gravitational attraction $F$ exerted by $M$ on $m$
+
+$$
+\begin{align*}
+{\color{green}\mathbf{F}} =G\times \frac{mM}{r^{2}} \times {\color{green}\mathbf{\hat{r}}} \tag{2}
+\end{align*}
+$$
+<div id="eq2"></div>
+
+In this equation $r̂$ is a unit vector in the direction of
+increase in coordinate $r$, which is directed away from the
+center of reference at the mass $M$. The negative sign in the
+equation indicates that the force $F$ acts in the opposite
+direction, toward the attracting mass $M$. The constant $G$,
+which converts the physical law to an equation, is the constant of universal gravitation.
+
+There was no way to determine the gravitational constant experimentally during Newton’s lifetime. The
+method to be followed was evident, namely to determine
+the force between two masses in a laboratory experiment.
+However, seventeenth century technology was not yet up
+to this task. Experimental determination of $G$ was
+extremely diﬃcult, and was first achieved more than a
+century after the publication of Principia by Lord
+Charles Cavendish (1731–1810). From a set of painstaking measurements of the force of attraction between two spheres of lead, Cavendish in 1798 determined the value
+of $G$ to be $6.754\times 10^{11} \ m^{3} \cdot kg^{-1} \cdot s^{-2}$. A modern value
+(Mohr and Taylor, 2005) is $6.674\ 210\ \times 10^{11} \ m^{3} \cdot kg^{-1} \cdot s^{-2}$.
+It has not yet been possible to determine G more precisely,
+due to experimental diﬃculty. Although other physical
+constants are now known with a relative standard uncer-
+tainty of much less than $1 \times 10^6$, the gravitational constant is known to only $150 \times 10^6$.
+</p>
+
+<h5>1.1.1) Utilizing Newton's Universal Gravitation Law in Geophysics: Assumptions and Applications</h5>
+<p>
+To harness the power of Newton's universal law, (<a href="#eq2">Equation 2</a>), of gravitation in geophysical investigations, we must establish certain fundamental assumptions. Primarily, we must consider the observation point and the object of interest (the target) as discrete point masses. This reduction allows us to bypass the complexities of multipoint mass attractions. Moreover, we must regard the Earth's strata as possessing a significantly lower mass than the target. This simplification allows us to approach the geophysical challenges with less computational complexity, enabling the application of point mass approximations in our calculations, as depicted in <a href="#fig1">Figure 1</a>. Note that these assumptions are still impractical for building a gravitational device.
+</p>
+
+<figure id="fig1">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1zTBhQ5TdTiucU3mgP8zXNmIU_adv5-Sj"
+        alt="fig 1" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.1: Information Collaboration from Geologists to Geophysicists.   
+        </strong>
+        Geologists survey and create a geological map to lead geophysicists to acquire acquisition areas. 
+	</figcaption>
+</figure>
+
+<h4>1.2) Gravitational Acceleration</h4>
+<p>
+In physics the field of a force is often more important than the absolute magnitude of the force. The field is defined as the force exerted on a material unit. For example, the electrical field of a charged body at a certain position is the force it exerts on a unit of electrical charge at that location. The gravitational field in the vicinity of an attracting mass is the force it exerts on a unit mass. <a href="#eq1">Equation 1</a> shows that this is equivalent to the acceleration vector.
+    
+In geophysical applications we are concerned with accelerations rather than forces. By comparing Eq. (1) and Eq. (2) we get the gravitational acceleration $g$ of the mass $m$ due to the attraction of the mass $M$:
+
+$$
+\begin{align*}
+{\color{green}\mathbf{g}} =-G\times \frac{M}{r^{2}} \times {\color{green}\mathbf{\hat{r}}} \tag{3}
+\end{align*}
+$$
+<div id="eq3"></div>
+
+The SI unit of acceleration is the $m \cdot s^{-2}$; this unit is
+unpractical for use in geophysics. In the now superseded
+c.g.s. system the unit of acceleration was the $cm \cdot s^{-2}$,
+which is called a gal in recognition of the contributions of
+Galileo. The small changes in the acceleration of gravity
+caused by geological structures are measured in thousandths of this unit, i.e., in milligal (mgal). Until recently, gravity anomalies due to geological structures were surveyed with field instruments accurate to about one-tenth of a milligal, which was called a gravity unit. Modern
+instruments are capable of measuring gravity diﬀerences
+to a millionth of a gal, or microgal (mgal), which is
+becoming the practical unit of gravity investigations. The
+value of gravity at the Earth’s surface is about $9.8 \ m \cdot s^{-2}$,
+and so the sensitivity of modern measurements of gravity
+is about $1$ part in $109$.
+</p>
+
+<h5>1.2.1) Gravimeter: Absolute Gravity</h5>
+<p>
+In the design of gravimeters, practical measurements typically hinge on the acceleration of the free-fall object rather than directly on force. This practical approach employs <a href="#eq3">Equation 3</a>, enabling the computation of gravitational acceleration. Essentially, this translates into assessing variations in gravity from a predetermined reference level.
+
+For application in exploration geophysics, Eq. (3) needs to be simplified. The gravity term $g$ is substituted with $\delta g$ because of the tiny changes in gravity accerlation caused by the Earth's strata. Newton's original conception of planetary orbits in gravity attraction is significantly larger if compared with the internal Earth's crusts, so the gravity unit is implemented here. The negative sign in $-G$ is typically disregarded because most scenarios in exploration geophysics occur within the subsurface and the absolute direction of gravity points toward the Earth's cores. In a number of measurements, the unit vector $\mathbf{\hat{r}}$ can be assumed to be $1$ to avoid computation complexity. The target $M$ can be replaced with $\Delta M$, indicating that the density contrasts between the rock and its host is large enough to produce a distinguishable "anomaly." Thus, the Eq. (3) reformulates to <a href="#eq4">Equation 4</a> and $\Delta M$ can relate to $\delta \rho \times v$. 
+
+$$
+\begin{align*}
+\delta g=G\times \frac{\Delta M}{r^{2}} =\frac{G}{r^{2}} \times \delta \rho \times v \tag{4}
+\end{align*}
+$$
+<div id="eq4"></div>
+
+$$
+\begin{align*}
+\delta g\  & =gravity\ attraction\ between\ weight\ drop\ and\ rocks\\
+G\  & =universal\ gravitational\ constant\ \left( 6.674\times 10^{-11} ,\ m^{3} \cdot kg^{-1} \cdot s^{-2}\right)\\
+\Delta M\  & =mass\ contrast\ between\ rock\ and\ its\ host\\
+r\  & =distance\ between\ the\ rock\ and\ weight\ drop\\
+\delta \rho \  & =density\ contrast\\
+v\  & =volume\ of\ the\ rock
+\end{align*}
+$$
+
+<figure id="fig2">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1phhvbW2K7AdJ3AIuO3Utco3t4TjhoeDt"
+        alt="fig 2" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.2: Information Collaboration from Geologists to Geophysicists.   
+        </strong>
+        Geologists survey and create a geological map to lead geophysicists to acquire acquisition areas. 
+	</figcaption>
+</figure>
+</p>
+
+<p></p>
+<strong style='color:#AD79A8'> 1) Excercise </strong>
+
+NewG Company is engaged in exploration geophysics, currently working on a project aimed at locating subterranean gold deposits. They utilize a gravimeter to construct a gravity profile that assists in identifying gravity anomalies. Refer to <a href="#fig3">Figure 3</a> for a depiction of the acquisition layout, where the first station registers a gravity acceleration represented as $f(x, y, r)$. In this function, $f$ corresponds to the coordinates $x$ and $y$, and the distance $r$ from the gravity station to the target. Using the given data in the following table, calculate the gravity profile associated with the prospective subsurface gold deposit.
+
+$$
+\begin{align*}
+station\ 1 & =( 71,\ 0,\ 2780)\\
+station\ 2 & =( 313,\ 0,\ 2540)\\
+station\ 3 & =( 555,\ 0,\ 2090)\\
+station\ 4 & =( 797,\ 0,\ 1770)\\
+station\ 5 & =( 1039,\ 0,\ 1650)\\
+station\ 6 & =( 1281,\ 0,\ 1760)\\
+station\ 7 & =( 1523,\ 0,\ 2080)\\
+station\ 8 & =( 1765,\ 0,\ 2500)
+\end{align*}
+$$
+
+<figure id="fig3">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1YihUM06vrytBdpPt_qJMVY3pEhNgns6G"
+        alt="fig 3" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.3: Information Collaboration from Geologists to Geophysicists.   
+        </strong>
+        Geologists survey and create a geological map to lead geophysicists to acquire acquisition areas. 
+	</figcaption>
+</figure>
+
+<p></p>
+<details>
+<summary>
+<strong style='color:#F29879'>Answer Ex. (1)</strong>
+</summary>
+
+```python
+#-----------------------------------------------------------------------------------------#
+import utilities as U
+#-----------------------------------------------------------------------------------------#
+
+stations = [(71, 0, 2780),
+            (313, 0, 2540),
+            (555, 0, 2090),
+            (797, 0, 1770),
+            (1039, 0, 1650),
+            (1281, 0, 1760),
+            (1523, 0, 2080),
+            (1765, 0, 2500)]
+print(f"station index: {stations[0][0]}, distance: {stations[0][2]}")
+
+#-----------------------------------------------------------------------------------------#
+
+width = 77
+hight = 71
+depth = 73
+density = 2670
+univeral_gravity = 6.674*pow(10, -11)
+U.scatter_plot(stations, width, hight, depth, univeral_gravity, density)
+
+#-----------------------------------------------------------------------------------------#
+```
+
+<figure id="fig3.1">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=14mGzdskI1J0_E3TeGxophORKSalIojZO"
+        alt="fig 3.1" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.3: Information Collaboration from Geologists to Geophysicists.   
+        </strong>
+        Geologists survey and create a geological map to lead geophysicists to acquire acquisition areas. 
+	</figcaption>
+</figure>
+
+</details>
+
+<h4>1.2) Gravitational Potential</h4>
+<p>
+    po
+</p>
+
+</body>
+</html>

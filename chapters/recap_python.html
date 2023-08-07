@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Recap Python</h1>
+
+<h2>1. Math Operators</h2>
+<p>In Python, we use math operators to perform arithmetic. Here are some common operators:</p>
+<ul>
+  <li>+: Addition</li>
+  <li>-: Subtraction</li>
+  <li>*: Multiplication</li>
+  <li>/: Division</li>
+  <li>**: Exponentiation</li>
+  <li>%: Modulus (remainder)</li>
+  <li>//: Integer division</li>
+</ul>
+
+```python
+# Example usage:
+a = 10
+b = 3
+
+print(a + b)  # Output: 13
+print(a - b)  # Output: 7
+print(a * b)  # Output: 30
+print(a / b)  # Output: 3.3333333333333335
+print(a ** b) # Output: 1000
+print(a % b)  # Output: 1
+print(a // b) # Output: 3
+```
+
+<h2>2. If-Else Statement</h2>
+<p>In Python, we use 'if', 'elif', and 'else' keywords to control the flow of the program based on conditions.</p>
+
+**Operators:**
+
+1. **`==` (Equal):** This operator checks if the values of two operands are equal. If they are, the condition becomes true.
+2. **`!=` (Not equal):** This operator checks if the values of two operands are not equal. If they are not equal, the condition becomes true.
+3. **`>` (Greater than):** This operator checks if the value of the left operand is greater than the value of the right operand. If it is, the condition becomes true.
+4. **`<` (Less than):** This operator checks if the value of the left operand is less than the value of the right operand. If it is, the condition becomes true.
+5. **`>=` (Greater than or equal to):** This operator checks if the value of the left operand is greater than or equal to the value of the right operand. If it is, the condition becomes true.
+6. **`<=` (Less than or equal to):** This operator checks if the value of the left operand is less than or equal to the value of the right operand. If it is, the condition becomes true.
+
+```python
+# Example usage:
+x = 10
+if x > 0:
+    print("x is positive")  # This will be printed
+elif x < 0:
+    print("x is negative")
+else:
+    print("x is zero")
+# Additional comparison operators:
+
+# == : Checks if the values of two operands are equal
+# != : Checks if the values of two operands are not equal
+# >  : Checks if the value of the left operand is greater than the value of the right operand
+# <  : Checks if the value of the left operand is less than the value of the right operand
+# >= : Checks if the value of the left operand is greater than or equal to the value of the right operand
+# <= : Checks if the value of the left operand is less than or equal to the value of the right operand
+```
+
+<span style='color:#80a7f0'>**1) Excercise**</span>
+<p>Use the if-else statement to create a rule to process an input grade for 100 students. The function should follow this grading scale:
+
+<ul>
+  <li>A: 90-100</li>
+  <li>B: 80-89</li>
+  <li>C: 70-79</li>
+  <li>D: 60-69</li>
+  <li>F: <60</li>
+</ul> 
+
+</p>
+
+<details>
+<summary>
+<span style='color:#badea3'>answer: if-else</span>
+</summary>
+
+```python
+import random
+
+#-----------------------------------------------------------------------------------------#
+number_of_student = 100
+list_score = [random.randint(0, number_of_student) for _ in range(number_of_student)]
+print(f"the first 10 student grades: {list_score[0:10]}")
+#-----------------------------------------------------------------------------------------#
+score = list_score[0]
+print(f"the input score is {score}")
+if score >= 80:
+    print('your letter grade is A')
+elif score >= 75 and score < 80:
+    print('your letter grade is B+')
+elif score >= 70 and score < 75:
+    print('your letter grade is B')
+elif score >= 65 and score < 70:
+    print('your letter grade is C+')
+elif score >= 55 and score < 65:
+    print('your letter grade is C')
+else:
+    print('your letter grade is F')
+#-----------------------------------------------------------------------------------------#
+```
+
+<!-- <code style="color: yellow; background-color: rgb(68, 16, 16);">
+the first 10 student grades: [55, 48, 76, 75, 99, 7, 14, 38, 2, 38]
+</code> -->
+
+<p></p>
+
+**Description:**
+
+This Python script consists of three main parts which are separated by comment lines. 
+
+1. In the first part, it creates a list of random scores for a simulated class of 100 students. 
+2. It then prints the scores of the first 10 students to give you a glimpse of the data. 
+3. Lastly, it uses an if-else statement to assign a letter grade to the first student's score based on common grading standards.
+
+Let's break it down step by step:
+
+- `number_of_student = 100`: This line sets the number of students as 100.
+- `list_score = [random.randint(0, number_of_student) for _ in range(number_of_student)]`: This is a list comprehension, a compact way of creating a list in Python. This specific line creates a list of 100 random integers between 0 and 100 (inclusive). Each integer represents a student's score.
+- `print(f"the first 10 student grades: {list_score[0:10]}")`: This line prints the scores of the first 10 students. In Python, indices start from 0, so `list_score[0:10]` gets the scores of the first 10 students.
+- `score = list_score[0]`: This line assigns the first student's score to the variable `score`.
+- The last part of the script is a multi-branch if-else statement. It checks the value of `score` and prints a corresponding letter grade. For example, if the score is between 80 and 100, it prints 'A'. If it's between 75 and 80, it prints 'B+', and so on. If the score is below 55, it prints 'F'.
+
+</details>
+
+
+<h2>3. Built-in Functions</h2>
+
+Some of the most common mathematical functions in NumPy:
+
+1. **`numpy.abs(x)`**: This function operates element-wise to calculate the absolute value. It works on arrays, unlike the built-in Python function `abs()`.
+
+```python
+import numpy as np
+print(np.abs([-1, -2, 3]))  # Output: array([1, 2, 3])
+```
+
+2. **`numpy.round(a, decimals)`**: This function rounds an array to the given number of decimals.
+
+```python
+print(np.round([0.37, 1.64]))  # Output: array([0., 2.])
+```
+
+3. **`numpy.amin(a)`** and **`numpy.amax(a)`**: These functions return the minimum and maximum of an array along an axis, respectively.
+
+```python
+print(np.amin([4, 2, 9]))  # Output: 2
+print(np.amax([4, 2, 9]))  # Output: 9
+```
+
+4. **`numpy.sum(a, axis)`**: This function returns the sum of array elements over a given axis.
+
+```python
+print(np.sum([1, 2, 3]))  # Output: 6
+```
+
+5. **`numpy.mean(a, axis)`**: This function computes the arithmetic mean along the specified axis.
+
+```python
+print(np.mean([1, 2, 3, 4, 5]))  # Output: 3.0
+```
+
+<span style='color:#80a7f0'>**2) Excercise**</span>
+<p>
+    xxx
+</p>
+
+<details>
+<summary>
+<span style='color:#badea3'>answer: built-in functions</span>
+</summary>
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+#-----------------------------------------------------------------------------------------#
+start = 0
+increasing_interval = 2*np.pi
+number_of_datapoints = 1000
+x = np.linspace(start, increasing_interval, number_of_datapoints)
+sin_ = np.sin(x)
+cos_ = np.cos(x)
+sum_ = sin_ + cos_
+#-----------------------------------------------------------------------------------------#
+plt.figure(figsize=(10, 6))  
+plt.plot(x, sin_, label='sin(x)', color='blue')  
+plt.plot(x, cos_, label='cos(x)', color='red')  
+plt.plot(x, sum_, label='sin(x)+cos(x)', linewidth=5, color='green')  
+plt.xlabel('radian')
+plt.ylabel('amplitude')
+plt.legend()
+plt.show()
+#-----------------------------------------------------------------------------------------#
+```
+
+<div style="padding: 20px 0;">
+    <img src="https://drive.google.com/uc?id=1Jx4X3nNkIa63LmzxQ5tv2sMfmW2TPp2l" alt="Sin and Cos Plot" style="max-width:100%;">
+</div>
+
+**Description:**
+
+The code now plots **`sin(x), cos(x),`** and their sum in different colors (blue, red, and green, respectively) on the same graph. The label parameter is used to set the names that will appear in the legend. **`plt.legend()`** is used to display the legend.
+
+The plot will help you visualize how the functions **`sin(x), cos(x),`** and their sum behave over one period. The x-axis represents the input value (**`from 0 to 2π`**) and the y-axis represents the output of the functions. Each function is represented by a different color, as specified in the plot command. The legend on the plot helps you identify which color corresponds to which function.
+</details>
+
+<h2>4. User Defined Functions</h2>
+
+Some of the most common mathematical functions in NumPy:
+
+1. **`numpy.abs(x)`**: This function operates element-wise to calculate the absolute value. It works on arrays, unlike the built-in Python function `abs()`.
+
+
+</body>
+</html>

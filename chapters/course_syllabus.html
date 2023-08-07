@@ -1,0 +1,92 @@
+# Welcome to Machine Learning for Geosciences: Time Series Classification and Forecasting (2023)
+
+## Course Syllabus: Fall 2023
+
+This semester, our main area of focus will be time series analysis based on satellite imagery. The essential datasets for this course can access via the [Google Earth Engine (EGG)](https://earthengine.google.com/). See the demo code to export an area.
+
+<details>
+<summary>
+<strong style='color:#ede394'>Code demo (GEE)</strong>
+</summary>
+
+```javascript
+var ubon_point = ee.Geometry.Point([104.8137530131729, 15.206025784347599]),
+    ubon_crop = ee.Geometry.Polygon(
+        [[[104.6047200462323, 15.470146334955723],
+          [104.6047200462323, 15.051489894994656],
+          [105.14785664291199, 15.051489894994656],
+          [105.14785664291199, 15.470146334955723]]], null, false);
+
+var study_area = ubon_crop;
+Map.centerObject(ubon_point, 10);
+var startDate = '2023-01-01';
+var endDate = '2023-02-01';
+var numImages = 1;
+var folder = 'sen_2_ubon'; // need to create manually before uploade
+
+// -------------------------------------------------------------------------- //
+
+var floodCollection = ee.ImageCollection('COPERNICUS/S2_SR_HARMONIZED')
+   .filterDate(startDate, endDate) 
+   .filter(ee.Filter.lt('CLOUDY_PIXEL_PERCENTAGE', 15))
+   .filterBounds(study_area)
+   .sort("CLOUD_COVERAGE_ASSESSMENT");
+
+var vizflood = {
+  bands: ['B4', 'B3', 'B2'], // (red, green, blue)
+  min: 211.36,
+  max: 3396.64,
+  gamma: 0.95
+};
+
+var start = ee.Date(startDate);
+var end = ee.Date(endDate);
+var interval = end.difference(start, 'days').divide(numImages);
+
+for (var i = 0; i < numImages; i++) {
+  var intervalStart = start.advance(interval.multiply(i), 'days');
+  var intervalEnd = intervalStart.advance(interval, 'days');
+  var intervalImages = floodCollection
+    .filterDate(intervalStart, intervalEnd);
+
+  if (intervalImages.size().getInfo() > 0) {
+    var minImage = intervalImages.min();
+    var timestamp = intervalStart.format('YYYY_MM_dd').getInfo();
+    Map.addLayer(minImage.clip(study_area), vizflood, timestamp);
+
+    // Export.image.toDrive({
+    //   image: minImage.select(['B4', 'B3', 'B2']),
+    //   folder: folder,
+    //   description: timestamp, 
+    //   scale: 10,
+    //   maxPixels: 1e10,
+    //   region: study_area,
+    //   crs: 'EPSG:4326',
+    //   fileFormat: 'GeoTIFF'
+    // });
+
+  } else {
+          print('No image available for the interval: ' 
+          + intervalStart.format('YYYY_MM_dd').getInfo() + ' to ' 
+          + intervalEnd.format('YYYY_MM_dd').getInfo());
+  }
+}
+```
+</details>
+
+<p>
+Our coursework and projects will be structured around four central themes, providing a comprehensive understanding of various applications of time series analysis in environmental studies. The themes are as follows:
+</p>
+
+<p>
+<strong style='color:#F08080'>Seasonal and Off-Seasonal Rices Classification Utilizing Traditional Machine Learning Methods:</strong>
+</p>
+<p>
+<strong style='color:#F08080'>Seasonal and Off-Seasonal Rices Classification Utilizing Multilayer Perceptron (MLP):</strong>
+</p>
+<p>
+<strong style='color:#F08080'>Seasonal and Off-Seasonal Rices Classification Utilizing Time Series Transformer (TST):</strong>
+</p>
+<p>
+<strong style='color:#F08080'>Seasonal and Off-Seasonal Rices Forcasting Utilizing Time Series Transformer (TST):</strong>
+</p>
