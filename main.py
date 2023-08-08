@@ -13,10 +13,6 @@ chapters = {
     "Seismic Exploration": "seismic.html",
     "Ground Penetrating Radar": "GPR.html"
 }
-    # "Electrical resistivity tomography (ERT)": "resis.html"
-    # "GPR": "gravity.html"
-    # "Seismic": "gravity.html"
-
 
 chapter_selection = st.sidebar.selectbox("Select a Chapter", list(chapters.keys()), index=0)
 
