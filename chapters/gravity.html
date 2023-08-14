@@ -329,7 +329,15 @@ While the Earth's shape is often idealized as a perfect sphere, in reality, it m
 	</figcaption>
 </figure>
 
+<h5>1.2.2) Gravity at Earth's Surface Based on Ellipsoidal Geometry</h5>
+
 By employing the parametric <a href="#eq5">Equation 5</a> to describe this elliptical form, and integrating with the principles laid out in <a href="#eq3">Equation 3</a>, one can derive an approximation for how the gravitational force on the Earth's surface varies with latitude. This variation is illustrated in <a href="#fig6">Figure 6</a>
+
+$$
+x=a\cdotp cos( \theta )\\
+y=b\cdotp sin( \theta ) \tag{5}
+$$
+<div id="eq5"></div>
 
 <figure id="fig6">
     <div style="padding: 20px 0;">
@@ -344,15 +352,56 @@ By employing the parametric <a href="#eq5">Equation 5</a> to describe this ellip
 	</figcaption>
 </figure>
 
-$$
-x=a\cdotp cos( \theta )\\
-y=b\cdotp sin( \theta ) \tag{5}
-$$
-<div id="eq5"></div>
+The gravity at the Earth's surface based on the assumption of the Earth's geometry has an ellipse shape and the gravity attraction at the ellipse curve can measure based on the distance from the center. To reproduce the <a href="#fig6">Figure 6</a>, we can follow the Python code below.
 
+When modeling the Earth's geometry in two dimensions, it is often represented as an ellipse, rather than a perfect ellipsoid. In such a representation, the gravitational force experienced at any point on the ellipse's curve is influenced by the distance from the ellipse's center.
 
+To understand the variation of gravitational attraction along the surface of an elliptical Earth, one can refer to Figure 6. The following Python code provides a computational method to reproduce this figure:
 
-<h5>1.2.3) Gravity and its potential</h5>
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+a = 6378137.0; b = 6356752.314245
+degree = np.linspace(0, 360, 90)
+radian = np.deg2rad(degree)
+x = a*np.cos(radian)
+y = b*np.sin(radian)
+
+G = 6.674*pow(10, -11)
+m = 5.972*pow(10, 24)
+r = np.sqrt(pow(x, 2) + pow(y, 2))
+g = (G*m)/pow(r, 2)
+
+fig, ax = plt.subplots(nrows=1, ncols=1, figsize=(20, 10))
+ax.ticklabel_format(useOffset=False, style='plain')
+plt.scatter(x, y, s=100, c=g, cmap='rainbow', marker='o', edgecolor='black')
+plt.title('Gravity variation in ellipse model', size=24, fontweight='bold')
+plt.xlabel('radius (m)', size=18)
+plt.ylabel('radius (m)', size=18)
+plt.grid(color='green', linestyle='--', linewidth=2.0)
+clb = plt.colorbar()
+clb.ax.tick_params(labelsize=18) 
+clb.ax.set_ylabel(r'$gravity\ (m\cdotp s^{-2})$', rotation=270, labelpad=50, fontsize=18)
+plt.show()
+```
+
+<h5>1.2.3) Gravity as a Vector: Point Mass</h5>
+
+<figure id="fig7">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=15iF5lDSpSOqUdoh6iUpsHE1HAI0lQR_I"
+        alt="fig 7" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.7: xxx.   
+        </strong>
+        xxx. 
+	</figcaption>
+</figure>
+
+<h5>1.2.4) Gravity and Its Potential</h5>
 
 </body>
 </html>
