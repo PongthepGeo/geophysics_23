@@ -271,10 +271,88 @@ U.scatter_plot(stations, width, hight, depth, univeral_gravity, density)
 
 </details>
 
-<h4>1.2) Gravitational Potential</h4>
-<p>
-    po
-</p>
+<h4>1.2) The Earth's Figure and Gravity</h4>
+
+<h5>1.2.1) Earth's Gravitational Models</h5>
+
+The World Geodetic System, particularly the <a href="https://en.wikipedia.org/wiki/World_Geodetic_System#WGS84">WGS 84</a> model, serves as a predominant framework for computing the Earth's surface gravity. Assuming the Earth as a perfect homogeneous sphere, as illustrated in <a href="#fig4">Figure 4</a>, facilitates an exploration of the relationship between surface gravity and distance from the Earth's center, delineated in <a href="#eq3">Equation 3</a>. For the purpose of these calculations, a unit vector $\mathbf{\hat{r}}$ is considered to have a value of $1$.
+
+<figure id="fig4">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1jym06QlwrCD5u3m2TgK04DrZu1r2vSX1"
+        alt="fig 4" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.4: xxx.   
+        </strong>
+        xxx. 
+	</figcaption>
+</figure>
+
+This assumption reduces the complexity of the Earth's figure in the form of a point mass equation. Let's try to compute the gravity deduction with increasing distance from the Earth center using Python's snippet here. 
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+G = 6.674*pow(10, -11)
+m = 5.972*pow(10, 24)
+meter = pow(10, 6)
+r = np.array([6.3781*meter, 6.3881*meter, 6.4781*meter, 100*meter])
+f_1 = (G*m)/pow(r, 2)
+dis = np.linspace(6.3*meter, 100*meter, 100)
+f_2 = (G*m)/pow(dis, 2)
+
+_, ax = plt.subplots(nrows=1, ncols=1, figsize=(10, 5), tight_layout=True)
+ax.ticklabel_format(useOffset=False, style='plain')
+plt.scatter(r, f_1, s=500, c='red', marker='o', edgecolor='black')
+plt.plot(dis, f_2, color='orange')
+plt.title('Universal Gravity', size=18, fontweight='bold')
+plt.xlabel(r'$distance\ (m)$')
+plt.ylabel(r'$gravity\ acceleration\ (m\cdotp s^{-2})$')
+
+```
+
+While the Earth's shape is often idealized as a perfect sphere, in reality, it more closely resembles an oblate spheroid. The World Geodetic System, particularly the WGS 84 model, provides estimations on how the distance from the Earth's center varies with latitude. This relationship is graphically represented in <a href="#fig5">Figure 5</a>.
+
+<figure id="fig5">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1bHR8bk7QdezPL2Pr5HS-u2c47lKmpVmn"
+        alt="fig 5" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.5: xxx.   
+        </strong>
+        xxx. 
+	</figcaption>
+</figure>
+
+By employing the parametric <a href="#eq5">Equation 5</a> to describe this elliptical form, and integrating with the principles laid out in <a href="#eq3">Equation 3</a>, one can derive an approximation for how the gravitational force on the Earth's surface varies with latitude. This variation is illustrated in <a href="#fig6">Figure 6</a>
+
+<figure id="fig6">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1IBebx6IykFWwGNGdHO4-kF2Jt5jrvoeR"
+        alt="fig 6" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.6: xxx.   
+        </strong>
+        xxx. 
+	</figcaption>
+</figure>
+
+$$
+x=a\cdotp cos( \theta )\\
+y=b\cdotp sin( \theta ) \tag{5}
+$$
+<div id="eq5"></div>
+
+
+
+<h5>1.2.3) Gravity and its potential</h5>
 
 </body>
 </html>
