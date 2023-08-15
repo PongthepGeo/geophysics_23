@@ -10,7 +10,17 @@
     <img src="https://drive.google.com/uc?id=1OLGGLTQXuS10qWhj646o9pb6CsZAY-Pb" alt="pipeline" style="max-width:100%;">
 </div>
 
+<h1 style="text-align: center;">Reference Textbook</h1>
+
+<figure style="text-align: center;">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1xqsIrEuleD9NalU2zJ5dn2l3dWUnU9yr"
+        style="max-width:100%;">
+    </div>
+</figure>
+
 <h3>1) When Geophysics Shine?</h3>
+
 <p>
 Geosciences are a field that combines various disciplines, with geology and geophysics being two of its essential components. To understand the surface of the Earth, geological studies are crucial, which involve analyzing sedimentary rocks, interpreting structural features, and exploring the processes that shape our landscapes. These methods help us create a detailed narrative of surface phenomena, and this observation is a piece of evidence that can lead to the subsurface of the Earth's image.
 
@@ -124,14 +134,32 @@ c) Ground Penetrating Radar (GPR)
 c) Covering large areas quickly 
 </details>
 
-<h1 style="text-align: center;">Reference Textbook</h1>
+<h1 style="text-align: center;">Understanding Geophysical Data</h1>
+
+Please follow the <a href="https://play.google.com/store/apps/details?id=com.chrystianvieyra.physicstoolboxsuite&hl=en&gl=US">link</a> to download the geophysical toolbox application to understand geophysical data recorded by a mobile phone.
 
 <figure style="text-align: center;">
     <div style="padding: 20px 0;">
-        <img src="https://drive.google.com/uc?id=1xqsIrEuleD9NalU2zJ5dn2l3dWUnU9yr"
+        <img src="https://drive.google.com/uc?id=1cF1hcRYreteRNmyLdr7_E17mUIUbq_hQ"
         style="max-width:100%;">
     </div>
 </figure>
 
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('path_to_file.csv')
+
+fig, ax = plt.subplots(figsize=(10, 6))
+# Loop through the columns (excluding the time column) and plot them
+for column in ['gx', 'gy', 'gz', 'totalG']:
+    ax.plot(df.iloc[:, 0], df[column], '-o', label=column)
+ax.set_xlabel('Time')
+ax.set_ylabel('Intensity')
+ax.set_title('Intensity vs Time')
+ax.legend()
+plt.show()
+```
 </body>
 </html>
