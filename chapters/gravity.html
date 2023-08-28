@@ -192,32 +192,96 @@ $$
 </figure>
 </p>
 
-<p></p>
-<strong style='color:#AD79A8'> 1) Excercise </strong>
+<h5>1.2.2) Gravity Unit in Exploration Geophysics</h5>
 
-NewG Company is engaged in exploration geophysics, currently working on a project aimed at locating subterranean gold deposits. They utilize a gravimeter to construct a gravity profile that assists in identifying gravity anomalies. Refer to <a href="#fig3">Figure 3</a> for a depiction of the acquisition layout, where the first station registers a gravity acceleration represented as $f(x, y, r)$. In this function, $f$ corresponds to the coordinates $x$ and $y$, and the distance $r$ from the gravity station to the target. Using the given data in the following table, calculate the gravity profile associated with the prospective subsurface gold deposit.
+mGal: The unit '$mGal$' stands for milligal and is a unit of acceleration used in gravimetry. 1 mGal is one-thousandth of a gal, or $10^{-3} cm/s^{2}$. A gal (Galileo) is a non-SI unit of acceleration used in gravimetry and is defined as 1 centimeter per second squared ($cm/s^{2}$). The mGal is a more precise unit and is commonly used in exploration geophysics because the variations in the earth's gravitational field are usually very small and are often in the order of milligals.
 
-$$
-\begin{align*}
-station\ 1 & =( 71,\ 0,\ 2780)\\
-station\ 2 & =( 313,\ 0,\ 2540)\\
-station\ 3 & =( 555,\ 0,\ 2090)\\
-station\ 4 & =( 797,\ 0,\ 1770)\\
-station\ 5 & =( 1039,\ 0,\ 1650)\\
-station\ 6 & =( 1281,\ 0,\ 1760)\\
-station\ 7 & =( 1523,\ 0,\ 2080)\\
-station\ 8 & =( 1765,\ 0,\ 2500)
-\end{align*}
-$$
+$ms^{-2}$: This is the SI unit for acceleration, meters per second squared ($ms^{-2}$). In the context of exploration geophysics, it is used for expressing the acceleration due to gravity. The standard acceleration due to gravity at the Earth's surface is approximately 9.81 $ms^{-2}$. However, this value varies slightly across the surface of the Earth due to changes in altitude, latitude, and local geological conditions. Because the variations in gravity are often much smaller than 1 $ms^{-2}$, it is more common to use the mGal unit in exploration geophysics.
 
 <figure id="fig3">
     <div style="padding: 20px 0;">
-        <img src="https://drive.google.com/uc?id=1YihUM06vrytBdpPt_qJMVY3pEhNgns6G"
+        <img src="https://drive.google.com/uc?id=10cG8eYLIRBVM2SQV_EbllIfP6Vmsj4n8"
         alt="fig 3" style="max-width:100%;">
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.3: Information Collaboration from Geologists to Geophysicists.   
+            Fig.3: Gravity Unit.   
+        </strong>
+        mGal and ms<sup>-2</sup> are units of acceleration used to measure the variations in the earth's gravitational field in exploration geophysics. The mGal is more commonly used because it provides a more precise measurement for the small variations typically encountered in exploration geophysics. 
+	</figcaption>
+</figure>
+
+The table below show common mineral densities that are commonly found.
+
+<table border="1" align="center">
+  <thead>
+    <tr>
+      <th>Rocks</th>
+      <th>Density (10<sup>3</sup> kg/m<sup>3</sup>)</th>
+      <th>Minerals</th>
+      <th>Density (10<sup>3</sup> kg/m<sup>3</sup>)</th>
+    </tr>
+  </thead>
+  <tbody align="center">
+    <tr>
+      <td>Alluvium</td>
+      <td>1.96 - 2.00</td>
+      <td>Cassiterite</td>
+      <td>6.80 - 7.10</td>
+    </tr>
+    <tr>
+      <td>Amphibolites</td>
+      <td>2.79 - 3.14</td>
+      <td>Chalcopyrite</td>
+      <td>3.90 - 4.10</td>
+    </tr>
+    <tr>
+      <td>Shale</td>
+      <td>2.06 - 2.66</td>
+      <td>Quartz</td>
+      <td>2.59 - 2.65</td>
+    </tr>
+    <tr>
+      <td>Basalt</td>
+      <td>2.70 - 3.20</td>
+      <td>Sandstone</td>
+      <td>2.59 - 2.65</td>
+    </tr>
+    <tr>
+      <td>Coal</td>
+      <td>1.11 - 1.51</td>
+      <td>Gold native</td>
+      <td>19.30</td>
+    </tr>
+  </tbody>
+</table>
+
+<p></p>
+<strong style='color:#AD79A8'> 1) Excercise </strong>
+
+NewG Company is engaged in exploration geophysics, currently working on a project aimed at locating subterranean gold deposits. They utilize a gravimeter to construct a gravity profile that assists in identifying gravity anomalies. Refer to <a href="#fig4">Figure 4</a> for a depiction of the acquisition layout, where the first station registers a gravity acceleration represented as $f(x, y, r)$. In this function, $f$ corresponds to the coordinates $x$ and $y$, and the distance $r$ from the gravity station to the target. Using the given data in the following table, calculate the gravity profile associated with the prospective subsurface gold deposit.
+
+$$
+\begin{align*}
+station\ 1 & =( 71,\ 0,\ 2780) & station\ 5 & =( 1039,\ 0,\ 1650)\\
+station\ 2 & =( 313,\ 0,\ 2540) & station\ 6 & =( 1281,\ 0,\ 1760)\\
+station\ 3 & =( 555,\ 0,\ 2090) & station\ 7 & =( 1523,\ 0,\ 2080)\\
+station\ 4 & =( 797,\ 0,\ 1770) & station\ 8 & =( 1765,\ 0,\ 2500)
+\end{align*}
+$$
+
+\begin{equation*}
+station\ 1
+\end{equation*}
+
+<figure id="fig4">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1YihUM06vrytBdpPt_qJMVY3pEhNgns6G"
+        alt="fig 4" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.4: Information Collaboration from Geologists to Geophysicists.   
         </strong>
         Geologists survey and create a geological map to lead geophysicists to acquire acquisition areas. 
 	</figcaption>
@@ -256,37 +320,31 @@ U.scatter_plot(stations, width, hight, depth, univeral_gravity, density)
 #-----------------------------------------------------------------------------------------#
 ```
 
-<figure id="fig3.1">
+<figure id="">
     <div style="padding: 20px 0;">
         <img src="https://drive.google.com/uc?id=14mGzdskI1J0_E3TeGxophORKSalIojZO"
-        alt="fig 3.1" style="max-width:100%;">
+        alt="" style="max-width:100%;">
     </div>
-    <figcaption>
-		<strong style='color:#ade4f0'>
-            Fig.3: Information Collaboration from Geologists to Geophysicists.   
-        </strong>
-        Geologists survey and create a geological map to lead geophysicists to acquire acquisition areas. 
-	</figcaption>
 </figure>
 
 </details>
 
-<h4>1.2) The Earth's Figure and Gravity</h4>
+<h4>1.3) The Earth's Figure and Gravity</h4>
 
-<h5>1.2.1) Earth's Gravitational Models</h5>
+<h5>1.3.1) Earth's Gravitational Models</h5>
 
-The World Geodetic System, particularly the <a href="https://en.wikipedia.org/wiki/World_Geodetic_System#WGS84">WGS 84</a> model, serves as a predominant framework for computing the Earth's surface gravity. Assuming the Earth as a perfect homogeneous sphere, as illustrated in <a href="#fig4">Figure 4</a>, facilitates an exploration of the relationship between surface gravity and distance from the Earth's center, delineated in <a href="#eq3">Equation 3</a>. For the purpose of these calculations, a unit vector $\mathbf{\hat{r}}$ is considered to have a value of $1$.
+The World Geodetic System, particularly the <a href="https://en.wikipedia.org/wiki/World_Geodetic_System#WGS84">WGS 84</a> model, serves as a predominant framework for computing the Earth's surface gravity. Assuming the Earth as a perfect homogeneous sphere, as illustrated in <a href="#fig5">Figure 5</a>, facilitates an exploration of the relationship between surface gravity and distance from the Earth's center, delineated in <a href="#eq3">Equation 3</a>. For the purpose of these calculations, a unit vector $\mathbf{\hat{r}}$ is considered to have a value of $1$.
 
-<figure id="fig4">
+<figure id="fig5">
     <div style="padding: 20px 0;">
         <img src="https://drive.google.com/uc?id=1jym06QlwrCD5u3m2TgK04DrZu1r2vSX1"
-        alt="fig 4" style="max-width:100%;">
+        alt="fig 5" style="max-width:100%;">
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.4: xxx.   
+            Fig.5: Earth's Figure as a Point Mass.   
         </strong>
-        xxx. 
+        Assuming that the Earth is a homogeneous and perfectly spherical feature. 
 	</figcaption>
 </figure>
 
@@ -314,24 +372,24 @@ plt.ylabel(r'$gravity\ acceleration\ (m\cdotp s^{-2})$')
 
 ```
 
-While the Earth's shape is often idealized as a perfect sphere, in reality, it more closely resembles an oblate spheroid. The World Geodetic System, particularly the WGS 84 model, provides estimations on how the distance from the Earth's center varies with latitude. This relationship is graphically represented in <a href="#fig5">Figure 5</a>.
+While the Earth's shape is often idealized as a perfect sphere, in reality, it more closely resembles an oblate spheroid. The World Geodetic System, particularly the WGS 84 model, provides estimations on how the distance from the Earth's center varies with latitude. This relationship is graphically represented in <a href="#fig6">Figure 6</a>.
 
-<figure id="fig5">
+<figure id="fig6">
     <div style="padding: 20px 0;">
         <img src="https://drive.google.com/uc?id=1bHR8bk7QdezPL2Pr5HS-u2c47lKmpVmn"
-        alt="fig 5" style="max-width:100%;">
+        alt="fig 6" style="max-width:100%;">
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.5: xxx.   
+            Fig.6: Oblate Spheroid.   
         </strong>
-        xxx. 
+        The distance from the center of the Earth is represented by "a" and "b," indicating the distance along latitude and longitude, respectively. 
 	</figcaption>
 </figure>
 
-<h5>1.2.2) Gravity at Earth's Surface Based on Ellipsoidal Geometry</h5>
+<h5>1.3.2) Gravity at Earth's Surface Based on Ellipsoidal Geometry</h5>
 
-By employing the parametric <a href="#eq5">Equation 5</a> to describe this elliptical form, and integrating with the principles laid out in <a href="#eq3">Equation 3</a>, one can derive an approximation for how the gravitational force on the Earth's surface varies with latitude. This variation is illustrated in <a href="#fig6">Figure 6</a>
+By employing the parametric <a href="#eq5">Equation 5</a> to describe this elliptical form, and integrating with the principles laid out in <a href="#eq3">Equation 3</a>, one can derive an approximation for how the gravitational force on the Earth's surface varies with latitude. This variation is illustrated in <a href="#fig7">Figure 7</a>
 
 $$
 x=a\cdotp cos( \theta )\\
@@ -339,24 +397,20 @@ y=b\cdotp sin( \theta ) \tag{5}
 $$
 <div id="eq5"></div>
 
-<figure id="fig6">
+<figure id="fig7">
     <div style="padding: 20px 0;">
         <img src="https://drive.google.com/uc?id=1IBebx6IykFWwGNGdHO4-kF2Jt5jrvoeR"
-        alt="fig 6" style="max-width:100%;">
+        alt="fig 7" style="max-width:100%;">
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.6: xxx.   
+            Fig.7: Gravitational Variation in 2D of Ellipse Model.   
         </strong>
-        xxx. 
+        Earth's gravitational force varies along latitude due to unequal distances from the center. 
 	</figcaption>
 </figure>
 
-The gravity at the Earth's surface based on the assumption of the Earth's geometry has an ellipse shape and the gravity attraction at the ellipse curve can measure based on the distance from the center. To reproduce the <a href="#fig6">Figure 6</a>, we can follow the Python code below.
-
-When modeling the Earth's geometry in two dimensions, it is often represented as an ellipse, rather than a perfect ellipsoid. In such a representation, the gravitational force experienced at any point on the ellipse's curve is influenced by the distance from the ellipse's center.
-
-To understand the variation of gravitational attraction along the surface of an elliptical Earth, one can refer to Figure 6. The following Python code provides a computational method to reproduce this figure:
+The gravity at the Earth's surface based on the assumption of the Earth's geometry has an ellipse shape and the gravity attraction at the ellipse curve can measure based on the distance from the center. To reproduce the <a href="#fig7">Figure 7</a>, we can follow the Python code below.
 
 ```python
 import numpy as np
@@ -386,35 +440,69 @@ clb.ax.set_ylabel(r'$gravity\ (m\cdotp s^{-2})$', rotation=270, labelpad=50, fon
 plt.show()
 ```
 
-<h5>1.2.3) Gravity as a Vector: Point Mass</h5>
+<h5>1.3.3) Gravitational Vector: Point Mass</h5>
 
-<figure id="fig7">
-    <div style="padding: 20px 0;">
-        <img src="https://drive.google.com/uc?id=15iF5lDSpSOqUdoh6iUpsHE1HAI0lQR_I"
-        alt="fig 7" style="max-width:100%;">
-    </div>
-    <figcaption>
-		<strong style='color:#ade4f0'>
-            Fig.7: xxx.   
-        </strong>
-        xxx. 
-	</figcaption>
-</figure>
-
-<h5>1.2.4) Gravitational Acceleration and Potential</h5>
+Gravity, being a force, inherently has both magnitude and direction. Considering it as a vector rather than an absolute value (scalar) is crucial for accurately describing its effects on objects. The direction of the gravitational force is essential for calculating the gravitational tensor and can provide inside information on gravitational anisotropy. In addition, it is crucial in situations where multiple forces are acting on an object, as the net force is the vector sum of all individual forces.
 
 <figure id="fig8">
     <div style="padding: 20px 0;">
-        <img src="https://drive.google.com/uc?id=1xrvRJA9XGTCnTydL8ByanjoQsAlUneGZ"
+        <img src="https://drive.google.com/uc?id=15iF5lDSpSOqUdoh6iUpsHE1HAI0lQR_I"
         alt="fig 8" style="max-width:100%;">
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.8: xxx.   
+            Fig.8: Gravitational Vector.   
+        </strong>
+        This diagram shows a point mass gravimeter used to measure the gravity field on a mountain. The weight drop's gravity attraction can be decomposed into cartesian coordinates, where the total gravity field's magnitude is the reciprocal of the scalar form. A 3-component gravimeter can also measure gravity attraction and decompose it into axes for various other uses.. 
+	</figcaption>
+</figure>
+
+<h5>1.3.4) Gravitational Acceleration and Potential</h5>
+
+<figure id="fig9">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1xrvRJA9XGTCnTydL8ByanjoQsAlUneGZ"
+        alt="fig 9" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.9: xxx.   
         </strong>
         xxx. 
 	</figcaption>
 </figure>
+
+<h5>1.3.5) Spherical Model for Depth and Target Size Analysis</h5>
+
+<figure id="fig10">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1J4VkpD9F-mbDEHrxkFDiu3tFVOjs3902"
+        alt="fig 10" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.10: xxx.   
+        </strong>
+        xxx. 
+	</figcaption>
+</figure>
+
+<figure id="fig10">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1HFiuYifagTzADglOF0JYpYw9IhQAKTlg"
+        alt="fig 10" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.10: xxx.   
+        </strong>
+        xxx. 
+	</figcaption>
+</figure>
+
+<h3>2) Gravity Modeling</h3>
+
+<h3>3) Gravity Correction</h3>
 
 </body>
 </html>
