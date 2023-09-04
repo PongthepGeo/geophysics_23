@@ -1,0 +1,2 @@
+export PYTHONPATH=/home/pt/main/Chula/2023/geophysics_23/gimli/gimli
+export PATH=/home/pt/main/Chula/2023/geophysics_23/gimli/gimli/apps:$PATH

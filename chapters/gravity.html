@@ -270,10 +270,6 @@ station\ 4 & =( 797,\ 0,\ 1770) & station\ 8 & =( 1765,\ 0,\ 2500)
 \end{align*}
 $$
 
-\begin{equation*}
-station\ 1
-\end{equation*}
-
 <figure id="fig4">
     <div style="padding: 20px 0;">
         <img src="https://drive.google.com/uc?id=1YihUM06vrytBdpPt_qJMVY3pEhNgns6G"
@@ -459,6 +455,8 @@ Gravity, being a force, inherently has both magnitude and direction. Considering
 
 <h5>1.3.4) Spherical Model for Depth and Target Size Analysis</h5>
 
+The theoretical computation of gravitational attraction induced by a subsurface anomaly can be ascertained using <a href="#eq3">Equation 3</a>. Generally, the spatial variations of gravity in the x and y axes are negligible, and most gravimeters are not designed to detect them. The most substantial gravitational force occurs along the z-axis, directed towards the Earth's core. This is due to the mass distribution within the Earth, with density variations and anomalies contributing to the changes in the gravitational field.
+
 <figure id="fig9">
     <div style="padding: 20px 0;">
         <img src="https://drive.google.com/uc?id=1J4VkpD9F-mbDEHrxkFDiu3tFVOjs3902"
@@ -466,40 +464,174 @@ Gravity, being a force, inherently has both magnitude and direction. Considering
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.9: xxx.   
+            Fig.9: Gravitational Attraction Induced by a Subsurface Anomaly in the Spherical Model.   
         </strong>
-        xxx. 
+        The figure shows how the Spherical Model explains gravitational attraction from a subsurface anomaly. The z-axis represents the force towards the Earth's core. Variations along the x and y axes are minimal. Density variations and anomalies influence force intensity.
 	</figcaption>
 </figure>
 
-<figure id="fig10">
+1. $m_{sphere}$: This is the mass of the sphere, which is calculated by multiplying the volume of the sphere $v$ by the change in density $\Delta \rho_{contrast}$ between the sphere and its surrounding medium. The volume of a sphere is given by $\frac{4}{3} \pi R^3$, where $R$ is the radius of the sphere.
+
+2. $cos(\theta)$: This is the cosine of the angle $\theta$ between the radial line $r$ from the center of the sphere to the observation point and the vertical $z$ axis.
+
+3. $\Delta g_{z}$: This is the change in the gravitational field in the z-direction at the observation point due to the presence of the sphere.
+
+4. $\Delta g_{net}$: This is the net change in the gravitational field at the observation point due to the presence of the sphere.
+
+5. $G$: This is the gravitational constant.
+
+6. $r$: This is the radial distance from the center of the sphere to the observation point. It is calculated as $\sqrt{x^2 + z^2}$, where $x$ is the horizontal distance from the center of the sphere to the observation point and $z$ is the vertical distance from the center of the sphere to the observation point.
+
+7. $\Delta g_{z}$: The final expression for $\Delta g_{z}$ is the change in the gravitational field in the z-direction at the observation point due to the presence of the sphere. It is calculated by multiplying the net change in the gravitational field $\Delta g_{net}$ by the cosine of the angle between the radial line and the vertical axis $\cos(\theta) = \frac{z}{r}$, and substituting $\Delta g_{net}$ by $\frac{G m_{sphere}}{r^2}$.
+
+The final equation for $\Delta g_{z}$ expresses the change in the gravitational field in the z-direction at the observation point due to a sphere of radius \(R\), density contrast $\Delta \rho_{contrast}$, and located at a distance $\sqrt{x^2 + z^2}$ from the observation point. Using the code snippet below to compute the gravitational attraction in one point observation in z-axis.
+
+```python
+import numpy as np
+
+G = 6.674*pow(10, -11)
+gold_density = 19300 # kg/m3
+sandstone_density = 2590 # kg/m3
+density_contrast = gold_density - sandstone_density
+gold_diameter = 100 # meters 
+gold_depth = 200 # meters
+distance_x = 500 # meters
+
+def gravity_sphere(G, density_contrast, R, z, x):
+	x1 = density_contrast * ((4/3) * np.pi * pow(R, 3)) * z
+	x2 = pow((pow(x, 2) + pow(z, 2)), 1.5)
+	gz = G * (x1/x2)
+	gal = gz*0.01 # unit gal
+	mgal = gal*pow(10, 6) # unit gal
+	return mgal
+
+mgal_gz = gravity_sphere(G, density_contrast, gold_diameter/2, gold_depth, distance_x)
+print(f"gravity at {distance_x} meters from the origin is: {mgal_gz} mgal")
+```
+
+<figure id="fig10A">
     <div style="padding: 20px 0;">
         <img src="https://drive.google.com/uc?id=1HFiuYifagTzADglOF0JYpYw9IhQAKTlg"
-        alt="fig 10" style="max-width:100%;">
+        alt="fig 10A" style="max-width:100%;">
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.10: xxx.   
+            Fig.10A: Gravitational Field Variations Due to a Subsurface Spherical Anomaly.   
         </strong>
-        xxx. 
+        In order to accurately determine the depth and size of the target, we can employ a simplified approach by modeling the complex geometry as a sphere. This allows us to adjust the depth and size parameters in order to achieve a close fit with the observed data. 
+	</figcaption>
+</figure>
+
+<figure id="fig10B" style="text-align: center;">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1oYcgHssG9WHu7nlpu8Ku9hh9VzYlOWK0"
+        alt="fig 10B" style="max-width:50%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.10B: Gravity Profiles of Different Target Sizes and Depths.   
+        </strong>
+        The gravity profiles represent the responses of targets in different sizes and depths. 
 	</figcaption>
 </figure>
 
 <h5>1.3.5) Gravitational Acceleration and Potential</h5>
 
+The law of superposition is a fundamental principle in various branches of physics, and gravitation is no exception. In the context of gravitation, the principle asserts that the gravitational force or acceleration due to multiple point masses is essentially the vector sum of forces or accelerations produced by each point mass. While this approach requires vectorial manipulations, gravitation can be alternatively conceptualized as a scalar field, a perspective that offers a more straightforward treatment of diverse mass distributions.
+
+By incorporating the concept of gravitational potential, we can refine our understanding. The gravitational potential at a point in space, due to a point mass, represents the work done in bringing a unit mass from infinity to that point against gravitational forces. When dealing with multiple point masses, the total gravitational potential at a given location is simply the algebraic sum (or scalar sum) of the potentials due to each of these masses. This scalar approach aligns with the law of superposition, suggesting that the effects of individual masses are additive.
+
+This scalar perspective, encapsulated by gravitational potential, is particularly convenient. It bypasses the intricacies of vector operations and provides a direct, additive method to account for gravitational influences of complex and arbitrary mass distributions. By focusing on gravitational potential, we can grasp the cumulative effect of numerous point masses or continuous mass distributions more effortlessly than individually vector-summing the forces or accelerations they induce.
+
+$$
+V_{g} =G\int _{mass}\frac{\partial m}{r} \approx G\sum _{j}\frac{m_{j}}{r_{j}} \tag{6}
+$$
+
+$$
+\begin{align*}
+V_{g} & :\ gravitational\ potential\\
+G & :\ universal\ gravitational\ constant\\
+m & :\ point\ mass\\
+r & :\ distance\ between\ observation\ and\ point\ mass\\
+ & :\ \sqrt{( x_{2} -x_{1})^{2} +( y_{2} -y_{1})^{2}}
+\end{align*}
+$$
+<div id="eq6"></div>
+
+The utilization of gravity potential is a valuable approach when encountering multiple gravity anomalies. This technique analyzes scattering point masses that are uniformly distributed across a subsurface target. However, in most geophysics exploration, mineral deposits comprise a wide range of mineral forms, which can introduce heterogeneity in the point mass principle. As a result, it is crucial to consider this variability when applying the gravity potential concept in geophysics exploration. 
+
 <figure id="fig11">
     <div style="padding: 20px 0;">
         <img src="https://drive.google.com/uc?id=1xrvRJA9XGTCnTydL8ByanjoQsAlUneGZ"
-        alt="fig 11" style="max-width:100%;">
+        alt="fig 11" style="max-width:100%;" class="center">
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.11: xxx.   
+            Fig.11: Gravity Potential in Heterogeneity Point Masses.   
         </strong>
-        xxx. 
+        In most cases, mineral depositions comprise different mineral types such as <a href="#fig11">Figure 11</a>. 
 	</figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
 </figure>
 
+```python
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+
+G = 6.674*pow(10, -11)
+density = 19300 # kg/m3
+area = 77*71
+gold_mass = area*density
+
+station_1 = np.array([580, 0])
+station_2 = np.array([856, 0])
+station_3 = np.array([1150, 0])
+station_4 = np.array([1434, 0])
+station_5 = np.array([1718, 0])
+
+point_masses = np.array([[1005, 737], [1031, 784], [1109, 771], [997, 830], [1065, 835], [1169, 819], [1129, 874], [1040, 896]])
+
+def distance(point1, point2):
+    x1, y1 = point1
+    x2, y2 = point2
+    return math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+
+def potential(G, gold_mass, dis):
+	return G*(gold_mass/dis)
+
+total_U = 0  # initialize the accumulator
+for point_mass in point_masses:
+	dis = distance(station_1, point_mass)
+	U = potential(G, gold_mass, dis) 
+	print(f"point mass at: {point_mass} distance: {dis} meter give potential: {U} j/kg")
+	total_U += U  # accumulate the potential
+print(total_U)
+```
+
+<h5>1.3.6) Understanding the Geoid: Gravitational Anomalies and Earth's Irregular Shape</h5>
+
+The concept of a gravity anomaly and the geoid are both essential in understanding the Earth's gravitational field and its underlying structures. Here's a refined explanation:
+
+A gravity anomaly is the deviation between the observed gravitational measurement at a particular location on Earth's surface and the value predicted by a theoretical model. This discrepancy arises due to the Earth's non-uniform density and topographical variations. If the Earth were a perfect oblate spheroid with uniform density, gravitational measurements would adhere to a simple algebraic expression. But with factors like altitude, nearby terrains, and the presence of dense subsurface structures, gravitational anomalies occur. These anomalies are especially revealing; for instance, a subterranean ore deposit can induce a positive anomaly because of its heightened gravitational pull.
+
+There are various theoretical models used to predict gravity values, and the gravity anomaly is often contextualized concerning a chosen model. Examples include the Bouguer, free-air, and isostatic gravity anomalies, each factoring in distinct theoretical adjustments to gravitational values. By conducting gravity surveys with gravimeters, geologists can determine these anomalies over an area and deduce the region's subsurface geology.
+
+While gravity anomalies delve into deviations in gravitational measurements, the geoid presents an overarching understanding of the Earth's gravitational field. The geoid represents the hypothetical shape the Earth's sea surface would assume under the sole influence of Earth's gravitational pull and rotation, excluding other factors like winds and tides. This "mathematical figure of the Earth" is an irregular, smoothed-out surface, revealing the discrepancies arising from the uneven distribution of mass both within and on Earth's surface. Although it's a conceptual surface, the geoid is a vital reference in geodesy and geophysics, offering insights into Earth's true gravitational shape and variations, determined through extensive gravitational observations and computations.
+
+<figure id="fig12">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1Og4yJE7-99PdjYtcphI2FrzkW3Gq34v7"
+        alt="fig 12" style="max-width:100%;" class="center">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.12: Geoid and Gravity Anomaly.   
+        </strong>
+        (a) A mass outside the ellipsoid or (b) a mass excess below the ellipsoid elevates the geoid above the ellipsoid. N is the geoid undulation.
+	</figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
 
 <h3>2) Gravity Modeling</h3>
 

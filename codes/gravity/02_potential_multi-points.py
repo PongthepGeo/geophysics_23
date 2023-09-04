@@ -41,7 +41,6 @@ def potential(G, gold_mass, dis):
 #-----------------------------------------------------------------------------------------#
 
 # NOTE compute potential at station 1
-
 total_U = 0  # initialize the accumulator
 for point_mass in point_masses:
 	dis = distance(station_1, point_mass)
