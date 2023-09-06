@@ -385,7 +385,11 @@ While the Earth's shape is often idealized as a perfect sphere, in reality, it m
 
 <h5>1.3.2) Gravity at Earth's Surface Based on Ellipsoidal Geometry</h5>
 
-By employing the parametric <a href="#eq5">Equation 5</a> to describe this elliptical form, and integrating with the principles laid out in <a href="#eq3">Equation 3</a>, one can derive an approximation for how the gravitational force on the Earth's surface varies with latitude. This variation is illustrated in <a href="#fig7">Figure 7</a>
+By employing the parametric <a href="#eq5">Equation 5</a> to describe this elliptical form, and integrating with the principles laid out in <a href="#eq3">Equation 3</a>, one can derive an approximation for how the gravitational force on the Earth's surface varies with latitude. This variation is illustrated in <a href="#fig7">Figure 7</a>. These parametric equations are a general representation of an ellipse where 
+$a$ and $b$ determine its shape and size. Here, **a** and **b** are the semi-major and semi-minor axes respectively, or vice-versa depending on which is greater.
+
+- If **a > b**, then the ellipse is stretched more along the x-axis and **a** represents the semi-major axis.
+- If **b > a**, then the ellipse is stretched more along the y-axis and **b** represents the semi-major axis.
 
 $$
 x=a\cdotp cos( \theta )\\
@@ -632,6 +636,41 @@ While gravity anomalies delve into deviations in gravitational measurements, the
 	</figcaption>
 <!-- <a href="#fig11">Figure 11</a> -->
 </figure>
+
+<h5>1.3.7) Geoid and the Connection to Mean Sea Level (MSL)</h5>
+
+##### Definitions:
+- **Geoid**: 
+  The geoid is an equipotential surface of the Earth's gravitational field which best fits, in a least squares sense, global mean sea level. Essentially, it's the shape that the surface of the Earth's oceans would take under the influence of Earth's gravitation and rotation, ignoring other influences such as winds and tides. It is an irregular shape, undulating due to gravitational anomalies.
+- **Mean Sea Level (MSL)**: 
+  MSL is the average height of the sea's surface for all stages of the tide over a long period. It's used as a reference for elevations on land.
+##### Connection:
+- The geoid is often described as the "true zero" elevation because it represents the mean sea level without any disturbances (like waves, tides, or atmospheric pressure changes). Thus, when we speak of elevations "above sea level," we are, in essence, referring to elevations above the geoid.
+- In regions where the ocean is in equilibrium (e.g., not affected by currents, tides, or other transient forces), the sea surface coincides with the geoid. However, when you move to the continents, the concept of the geoid remains crucial, because it continues to represent this "zero" elevation.
+##### Complications:
+- In reality, the actual sea level doesn't perfectly match the geoid everywhere. Ocean currents, prevailing winds, atmospheric pressure, and even the temperature and salinity of seawater can cause the sea level to deviate from the geoid.
+- Moreover, Earth's gravity isn't uniform everywhere. There are places where gravity is a bit stronger or weaker, due to the distribution of mass within the Earth. This means the geoid isn't a perfect ellipsoid; it's bumpy and irregular.
+##### Applications:
+- Understanding the relationship between the geoid and MSL is crucial in various fields, from civil engineering (where it's important to know "true" elevations for construction projects) to satellite-based positioning systems like GPS.
+
+<figure id="fig13">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1FfappteBwdgq3ueD5gVxUj-A4ucdsFPD"
+        alt="fig 13" style="max-width:100%;" class="center">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.13: Geoid and Gravity Anomaly.   
+        </strong>
+        The geoid undulation, geoid height, or geoid anomaly is the height of the geoid relative to a given ellipsoid of reference. The undulation is not standardized, as different countries use different mean sea levels as reference, but most commonly refers to the EGM96 geoid.
+    </figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
+<p>
+Please cite
+
+Geoid. (2023, September 2). In Wikipedia. Retrieved from https://en.wikipedia.org/w/index.php?title=Geoid&oldid=1173366162
+</p>
 
 <h3>2) Gravity Modeling</h3>
 
