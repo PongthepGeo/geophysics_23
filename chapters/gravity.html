@@ -6,9 +6,9 @@
     Gravity Exploration in Geophysics
 </h2>
 
-<div style="padding: 20px 0;">
+<div style="text-align: center;">
     <img src="https://drive.google.com/uc?id=1HzyOZ5jW2GRcrzYmUE4Mr19awqFX-hTf"
-    style="max-width:100%;">
+    style="max-width:50%;">
 </div>
 
 <h3>1) Gravitation</h3>
@@ -453,7 +453,7 @@ Gravity, being a force, inherently has both magnitude and direction. Considering
 		<strong style='color:#ade4f0'>
             Fig.8: Gravitational Vector.   
         </strong>
-        This diagram shows a point mass gravimeter used to measure the gravity field on a mountain. The weight drop's gravity attraction can be decomposed into cartesian coordinates, where the total gravity field's magnitude is the reciprocal of the scalar form. A 3-component gravimeter can also measure gravity attraction and decompose it into axes for various other uses.. 
+        This diagram shows a point mass gravimeter used to measure the gravity field on a mountain. The weight drop's gravity attraction can be decomposed into cartesian coordinates, where the total gravity field's magnitude is the reciprocal of the scalar form. A 3-component gravimeter can also measure gravity attraction and decompose it into axes for various other uses. 
 	</figcaption>
 </figure>
 
@@ -666,15 +666,201 @@ While gravity anomalies delve into deviations in gravitational measurements, the
     </figcaption>
 <!-- <a href="#fig11">Figure 11</a> -->
 </figure>
-<p>
-Please cite
 
-Geoid. (2023, September 2). In Wikipedia. Retrieved from https://en.wikipedia.org/w/index.php?title=Geoid&oldid=1173366162
+<p>
+	Please cite
+
+	Geoid. (2023, September 2). In Wikipedia. Retrieved from https://en.wikipedia.org/w/index.php?title=Geoid&oldid=1173366162
 </p>
 
-<h3>2) Gravity Modeling</h3>
+<h3>2) Gravity Forward Modeling</h3>
+
+Gravity observations play a vital role in geophysics by allowing for the identification of density-related anomalies and the delineation of subsurface stratigraphy within the Earth. The technique of gravity profiling is handy for interpreting these observations by dividing the Earth's subsurface into layered configurations, each with its unique geological features and density contrasts. A comprehensive understanding of the complexities of these layers is crucial, as superposition effects may complicate the accurate localization of subsurface targets.
+
+Fig 14A: An illustration of gold deposits contained within sedimentary layers. This depiction suggests a secondary process wherein the gold, originally from the insidious rock, migrated and became encased within overlying sediments.
+
+<figure id="fig14a">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1OWj4s92NpgJx1pLiFrMWTBuWYVmi8fBB"
+        alt="fig 14a" style="max-width:100%;" class="center">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.14A: Sedimentary Envelopment of Migrated Gold Deposits.   
+        </strong>
+        An illustration of gold deposits contained within sedimentary layers. This depiction suggests a secondary process wherein the gold, originally from the insidious rock, migrated and became enveloped within overlying sediments.
+    </figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
+
+Fig 14B: This represents a transformation of the prior image, where the rock and soil densities are the conversion of pixel intensities. Using the point mass principle, each density pixel is further equated to its respective gravity potential. The density conversion demonstrates that the rock and soil layers are not uniform, known as rock strata. The heterogeneity of these layers, a common occurrence on Earth,  is further emphasized by the density contrast between the gold deposits and the surrounding rock.
+
+<figure id="fig14b">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=14jFeJ28ExspDAIUHBmKym41ArD7AJoxC"
+        alt="fig 14b" style="max-width:100%;" class="center">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.14B: Density Interpretation via Pixel Intensities.   
+        </strong>
+        This represents a transformation of the prior image, where pixel intensities have been converted to their corresponding rock densities. Using the point mass principle, each density pixel is further equated to its respective gravity potential.
+    </figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
+
+Fig 14C: Presented here are gravity profiles representing three distinct scenarios:
+Blue Curve: Represents the superposition of layers, a common phenomenon where the gravitational effects of multiple layers accumulate and mask individual layer contributions.
+Orange Curve: Demonstrates the gravitational profile upon removing the uppermost layer, revealing the impact of underlying stratigraphy.
+Green Curve: With the removal of two top layers, this curve emphasizes the gravitational influences of deeper layers.
+Red Curve: Singularly depicts the gravity response attributed to the gold deposits, showcasing the distinct anomaly.
+
+<figure id="fig14c">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=191XCGjFXSAu4rTzQ-HoZtMQcpjYcV1zV"
+        alt="fig 14c" style="max-width:100%;" class="center">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.14C: Comparative Gravity Profiles under Different Layer Scenarios.   
+        </strong>
+    </figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
+
+From the above observations, it is evident that raw, unprocessed data may lead to challenges in discerning specific anomalies due to the inherent issue of superposition. With its computational approach to gravity potential, forward modeling offers a tool to mitigate such challenges, but geophysicists must remain wary of the intricacies involved in layer stacking. Please see Github repository for the code snippet. <a href="https://en.wikipedia.org/wiki/World_Geodetic_System#WGS84">WGS 84</a>
 
 <h3>3) Gravity Correction</h3>
+
+<p>
+	Please cite
+
+	Gravity anomaly. (2023, August 25). In Wikipedia. Retrieved from https://en.wikipedia.org/w/index.php?title=Gravity_anomaly&oldid=1172142178
+</p>
+
+The gravity anomaly at a location on the Earth's surface is the difference between the observed value of gravity and the value predicted by a theoretical model. If the Earth were an ideal oblate spheroid of uniform density, then the gravity measured at every point on its surface would be given precisely by a simple algebraic expression. However, the Earth has a rugged surface and non-uniform composition, which distorts its gravitational field. The theoretical value of gravity can be corrected for altitude and the effects of nearby terrain, but it usually still differs slightly from the measured value. This gravity anomaly can reveal the presence of subsurface structures of unusual density. For example, a mass of dense ore below the surface will give a positive anomaly due to the increased gravitational attraction of the ore.
+
+Different theoretical models will predict different values of gravity, and so a gravity anomaly is always specified with reference to a particular model. The Bouguer, free-air, and isostatic gravity anomalies are each based on different theoretical corrections to the value of gravity.
+
+A gravity survey is conducted by measuring the gravity anomaly at many locations in a region of interest, using a portable instrument called a gravimeter. Careful analysis of the gravity data allows geologists to make inferences about the subsurface geology.
+
+<h4>3.1) The model field and corrections</h4>
+
+<p>The starting point for the model field is the International Reference Ellipsoid, which gives the normal gravity <i>g</i><sub>n</sub> for every point on the Earth's idealized shape. Further refinements of the model field are usually expressed as corrections added to the measured gravity or (equivalently) subtracted from the normal gravity. At a minimum, these include the tidal correction △<i>g</i><sub>tid</sub>, the terrain correction △<i>g</i><sub>T</sub>, and the free air correction △<i>g</i><sub>FA</sub>. Other corrections are added for various gravitational models. The difference between the corrected measured gravity and the normal gravity is the gravity anomaly.
+
+<h5>3.1.1) The normal gravity</h5>
+
+The normal gravity accounts for the bulk gravitation of the entire Earth, corrected for its idealized shape and rotation. It is given by the formula:
+
+$$
+g_{n} = g_{e} \left(1 + \beta_{1} \sin^{2}\lambda + \beta_{2} \sin^{2}2\lambda \right)
+$$
+
+where:
+
+$$
+g_{e} = 9.780327 \text{ m/s}^2 \\
+\beta_{1} = 5.30244 \times 10^{-3} \\
+\beta_{2} = -5.8 \times 10^{-6}
+$$
+
+This is accurate to 0.1 [mgal](https://en.wikipedia.org/wiki/Gal_(unit)) at any latitude ($\lambda $). When greater precision is needed, a more elaborate formula gives the normal gravity with an accuracy of 0.0001 mgal. $g_n$
+
+<figure id="fig15a;">
+    <div style="text-align: center; padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1HoGRcoJtHg8_FLjPypnbKyZ6CYI1-gTR"
+        alt="fig 15a" style="max-width:80%;" class="center">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.15A: Normal Gravity.   
+        </strong>
+        Hypothetical gravity measurement. The value of gravity is measured at the red point marked g<sub>m</sub>. The green point is the normal gravity g<sub>n</sub>, which lies on the reference ellipsoid.
+    </figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
+
+<h5>3.1.2) The tidal correction</h5>
+
+The Sun and Moon create time-dependent tidal forces that affect the measured value of gravity by about 0.3 mgal. Two-thirds of this is from the Moon. This effect is very well understood and can be calculated precisely for a given time and location using astrophysical data and formulas, to yield the tidal correction △<i>g</i><sub>tid</sub>.
+
+<figure id="fig15b;">
+    <div style="text-align: center; padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1hICVusVJ9bYVmMkDSq9BIY7hDTEvQJPv"
+        alt="fig 15b" style="max-width:80%;" class="center">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.15B: Tidal Correction.   
+        </strong>
+        Hypothetical gravity measurement corrected for tidal forces.
+    </figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
+
+<h5>3.1.3) The terrain correction</h5>
+
+The local [topography](/wiki/Topography) of the land surface affects the gravity measurement. Both terrain higher than the measurement point and valleys lower than the measurement point reduce the measured value of gravity. This is taken into account by the terrain correction △g<sub>T</sub>. The terrain correction is calculated from knowledge of the local topography and estimates of the density of the rock making up the high ground. In effect, the terrain correction levels the terrain around the measurement point. The terrain correction must be calculated for every point at which gravity is measured, taking into account every hill or valley whose difference in elevation from the measurement point is greater than about 5% of its distance from the measurement point. This is tedious and time-consuming but necessary for obtaining a meaningful gravity anomaly. 
+
+<figure id="fig15c;">
+    <div style="text-align: center; padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1DZhwfk9rW1STihOG-tW98KKuC8JGrfNt"
+        alt="fig 15c" style="max-width:80%;" class="center">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.15C: Terrain Correction.   
+        </strong>
+        Hypothetical gravity measurement corrected for tides and terrain.
+    </figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
+
+<h5>3.1.4) The free-air correction</h5>
+
+The next correction is the free-air correction. This takes into account the fact that the measurement is usually at a different elevation than the reference ellipsoid at the measurement latitude and longitude. For a measurement point above the reference ellipsoid, this means that the gravitational attraction of the bulk mass of the earth is slightly reduced. The free-air correction is simply 0.3086 mgal m<sup>−1</sup> times the elevation above the reference ellipsoid. The remaining gravity anomaly at this point in the reduction is called the *free-air anomaly*. 
+
+$$
+\Delta g_{F}=g_{m}+(\Delta g_{FA}+\Delta g_{T}+\Delta g_{\text{tide}})-g_{n}
+$$
+
+<figure id="fig15d;">
+    <div style="text-align: center; padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1NIqqEyobacIOWZtmSYnMMtF2Q6yXsILg"
+        alt="fig 15d" style="max-width:80%;" class="center">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.15D: Free-Air Correction.   
+        </strong>
+        Hypothetical gravity measurement with free-air corrections.
+    </figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
+
+<h5>3.1.5) Bouguer plate correction</h5>
+
+The free-air anomaly does not take into account the layer of material (after terrain leveling) outside the reference ellipsoid. The gravitational attraction of this layer or plate is taken into account by the Bouguer plate correction, which is −0.0419×10<sup>−3</sup> ρ h mgal m<sup>2</sup> kg<sup>−1</sup>. The density of crustal rock, ρ, is usually taken to be 2670 kg m<sup>3</sup> so the Bouguer plate correction is usually taken as −0.1119 mgal m<sup>−1</sup> h. Here h is the elevation above the reference ellipsoid. The remaining gravity anomaly at this point in the reduction is called the *Bouguer anomaly*. That is, the Bouguer anomaly is: 
+
+$$
+\Delta g_{B}=g_{m}+(\Delta g_{BP}+\Delta g_{FA}+\Delta g_{T}+\Delta g_{\text{tide}})-g_{n}
+$$
+
+<figure id="fig15e;">
+    <div style="text-align: center; padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=17pyA5kOl68Gz4pP6-1Tz6BYXVY9dNmrY"
+        alt="fig 15e" style="max-width:80%;" class="center">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.15E: Bouguer Plate Correction.   
+        </strong>
+        Hypothetical gravity measurement with Bouguer correction.
+    </figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
+
+<h3>4) Applications in Gravity Observation</h3>
 
 </body>
 </html>
