@@ -1,0 +1,2 @@
+export PYTHONPATH=/workspace/gimli/gimli
+export PATH=/workspace/gimli/gimli/apps:$PATH

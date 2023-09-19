@@ -57,7 +57,7 @@ plt.xlabel("Gravity Station x-coordinate")
 plt.ylabel("Total Potential")
 plt.legend()
 plt.title("Gravity Potential Profiles")
-# plt.savefig("data_out/gravity_profiles.svg", format='svg', bbox_inches='tight', pad_inches=0, transparent=True, dpi=80)
+plt.savefig("data_out/ex_G.svg", format='svg', bbox_inches='tight', pad_inches=0, transparent=True, dpi=80)
 plt.show()
 
 #-----------------------------------------------------------------------------------------#

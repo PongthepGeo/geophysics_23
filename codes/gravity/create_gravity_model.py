@@ -8,8 +8,8 @@ from sklearn.cluster import KMeans
 from scipy.ndimage import gaussian_filter
 #-----------------------------------------------------------------------------------------#
 
-img_path = "image_out/gravity_model_02.png"
-# img_path = "image_out/ex_gravity_model.png"
+# img_path = "image_out/gravity_model_02.png"
+img_path = "image_out/ex_gravity_model.png"
 output_dir = "data_out"
 
 #-----------------------------------------------------------------------------------------#
@@ -22,8 +22,8 @@ if not os.path.exists(output_dir):
 image = Image.open(img_path)
 data = np.array(image)
 data = data[:, :, :3]
-data_subsection = data[700:]
-# data_subsection = data
+# data_subsection = data[700:]
+data_subsection = data
 smoothed_data = gaussian_filter(data_subsection, sigma=(4, 4, 0))
 pixels = smoothed_data.reshape(-1, 3)
 kmeans = KMeans(n_clusters=5, n_init='auto', max_iter=10000, random_state=42)
@@ -54,7 +54,7 @@ plt.show()
 
 density_map = {0: 2100, 1: 2700, 2: 3120, 3: 19300, 4: 2800}
 densities_image = np.vectorize(density_map.get)(labels_image)
-np.save(os.path.join(output_dir, "densities_image.npy"), densities_image)
+# np.save(os.path.join(output_dir, "densities_image.npy"), densities_image)
 # np.save(os.path.join(output_dir, "exercise.npy"), densities_image)
 
 #-----------------------------------------------------------------------------------------#
