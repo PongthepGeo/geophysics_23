@@ -357,7 +357,7 @@ Resistivity (and IP) measurements are made using a four-electrode conﬁguration
 
 The labels A, B, M and N are commonly used for the electrodes in a quadrupole: A is the
 current source, B is the current sink and voltage is measured between electrodes M and
-N. Examples of such quadrupoles are shown in Figure 4.2. We will discuss choice of
+N. Examples of such quadrupoles are shown in <a href="#fig06">Figure 6</a>. We will discuss choice of
 quadrupole geometry in the next section, but ﬁrst we will develop an expression for
 apparent resistivity, which is the resistivity of a homogenous subsurface that the measured
 voltage and current are equivalent to. That is, the apparent resistivity is only the true
@@ -366,9 +366,9 @@ the apparent resistivity are valid. Below we explain how an apparent resistivity
 For most ﬁeld-based applications, the calculations are made with the assumption of a ﬂat
 ground surface and inﬁnite boundaries (a so-called, inﬁnite half space).
 
-Building on Equation 4.5, we can state, through superposition, that the difference in
+Building on <a href="#eq5">Equation 5</a>, we can state, through superposition, that the difference in
 voltage between electrodes M and N due to current injected between electrodes A and
-B (with all electrodes on the ground surface, as in Figure 4.2a) is given by
+B (with all electrodes on the ground surface, as in <a href="#fig06">Figure 6A</a>) is given by
 
 $$
 \begin{equation}
@@ -379,7 +379,7 @@ $$
 
 where AM is the distance between electrodes A and M, BM is the distance between
 electrodes B and M, etc., and the subsurface is homogenous with resistivity ρ.
-Using Equation 4.6 an expression for the apparent resistivity, ρa , can be rewritten as
+Using <a href="#eq6">Equation 6</a> an expression for the apparent resistivity, ρa , can be rewritten as
 
 $$
 \begin{equation}
@@ -397,39 +397,47 @@ K = \frac{1}{\frac{1}{AM} - \frac{1}{BM} - \frac{1}{AN} + \frac{1}{BN}} \tag{8}
 $$
 <div id="eq8"></div>
 
-The term ΔV I is often referred to as a transfer resistance since it has units of ohms.
-For the general case where electrodes are not on the ground surface (e.g. Figure 4.2b), we
-can follow the same principles using Equation 4.4 to derive
+The term $\frac{\Delta V}{I}$ is often referred to as a transfer resistance since it has units of ohms.
+For the general case where electrodes are not on the ground surface, we
+can follow the same principles using <a href="#eq4">Equation 4</a> to derive
 
 $$
 \begin{equation}
-K = \frac{1}{\frac{1}{AM} + \frac{1}{Ai_M} - \frac{1}{BM} - \frac{1}{Bi_M} - \frac{1}{AN} - \frac{1}{Ai_N} + \frac{1}{BN} + \frac{1}{Bi_N}} \tag{9}
+K = \frac{1}{\frac{1}{AM} + \frac{1}{A_iM} - \frac{1}{BM} - \frac{1}{B_iM} - \frac{1}{AN} - \frac{1}{A_iN} + \frac{1}{BN} + \frac{1}{B_iN}} \tag{9}
 \end{equation}
 $$
 <div id="eq9"></div>
 
-where AiM is the distance between imaginary electrode Ai and electrode M, BiM is the
-distance between imaginary electrode Bi and electrode M, etc., as shown in Figure 4.2b.
-Apparent resistivity is a convenient value for ﬁeld measurements as it has the same units
-as resistivity (Ωm), can allow the ﬁeld operator to gauge variability of measurements
-directly in the ﬁeld, and allow some immediate assessment of data quality (the apparent
-resistivity, for example, should be positive, even for a highly heterogeneous resistivity
+where $AM$ is the distance between imaginary electrode $A_i$ and electrode $M$, $B_iM$ is the
+distance between imaginary electrode $B_i$ and electrode $M$. Apparent resistivity is a convenient value for field measurements as it has the same units as resistivity ($Ωm$), can allow the ﬁeld operator to gauge variability of measurements directly in the ﬁeld, and allow some immediate assessment of data quality (the apparent resistivity, for example, should be positive, even for a highly heterogeneous resistivity
 structure, provided the geometry designated is correct). Most ﬁeld instruments report
 apparent resistivity during measurements, provided the user has supplied details of elec-
 trode geometry. However, it is important to note that the computation of apparent resistivity,
-as described above, assumes a ﬂat ground surface and an inﬁnite half space. If topographic
+as described above, assumes a flat ground surface and an inﬁnite half space. If topographic
 variation exists at the site, or if the region of investigation is bounded in some way, then the
 reported apparent resistivity does not reﬂect the true resistivity of the subsurface even if it
 has a homogeneous resistivity. And in some such conﬁgurations the computed apparent
 resistivity may even be negative, which is clearly non-physically correct. An example of
-a bounded system is a vessel (see e.g. Figure 3.26) – in such a case, Equation 4.3 is not
+a bounded system is a vessel – in such a case, <a href="#eq3">Equation 3</a> is not
 a correct solution to Poisson’s equation and analytical solutions for the particular geometry may not be possible. This may be overcome by deriving numerical approximations to
 Poisson’s equation for the speciﬁc problem geometry.
 
+$$
+\begin{align*}
+\textbf{Array} & \qquad \textbf{Geometric factor, K} \\
+\hline
+\text{Wenner} & : \quad 2\pi a \\
+\text{Schlumberger} & : \quad \pi an(n + 1) \text{ or } \pi an^2 \text{ if } n \geq 10 \\
+\text{Dipole–dipole} & : \quad \pi an(n + 1)(n + 2) \\
+\text{Pole–dipole} & : \quad 2\pi an(n + 1) \\
+\text{Pole–pole} & : \quad \frac{2\pi a}{na} + \frac{1}{na + (n+1)a} + \frac{1}{(n+1)a + b} \\
+\text{Gradient} & : \quad \sqrt{2\pi a^2 + 2}
+\end{align*}
+$$
+
 As stated earlier, apparent resistivity is a convenient value for ﬁeld measurements but the
-true measurement (that should be recorded for all surveys) is the transfer resistance, R = ΔV/
-I: the ratio of measured potential difference to applied current. The transfer resistance
-(measured in Ω) can be positive or negative (a negative value implies a negative geometric
+true measurement (that should be recorded for all surveys) is the transfer resistance, $\displaystyle R=\frac{\Delta V}{I}$: the ratio of measured potential difference to applied current. The transfer resistance
+(measured in $Ω$) can be positive or negative (a negative value implies a negative geometric
 factor) and can vary by orders of magnitude even if the resistivity is uniform. Recognizing
 that the transfer resistance may be negative is important for non-standard conﬁgurations of
 electrodes as some commercial instruments do not report the polarity of the transfer
@@ -449,20 +457,31 @@ resistance (or voltage) under default settings.
 <!-- <a href="#fig11">Figure 11</a> -->
 </figure>
 
-<h4>4.1) Electrode Array Geometries</h4>
+<h4>4.1) Survey Configurations</h4>
 
-$$
-\begin{align*}
-\textbf{Array} & \qquad \textbf{Geometric factor, K} \\
-\hline
-\text{Wenner} & : \quad 2\pi a \\
-\text{Schlumberger} & : \quad \pi an(n + 1) \text{ or } \pi an^2 \text{ if } n \geq 10 \\
-\text{Dipole–dipole} & : \quad \pi an(n + 1)(n + 2) \\
-\text{Pole–dipole} & : \quad 2\pi an(n + 1) \\
-\text{Pole–pole} & : \quad \frac{2\pi a}{na} + \frac{1}{na + (n+1)a} + \frac{1}{(n+1)a + b} \\
-\text{Gradient} & : \quad \sqrt{2\pi a^2 + 2}
-\end{align*}
-$$
+There are many geometries of electrodes that can be used in the field. The electrodes can be co-linear or they can be in an arbitrary configuration. Current and potential electrodes can be on the surface or in boreholes. The choice of which survey geometry to use is governed by: (1) what conductivity structure is sought, (2) field constraints for laying out electrodes, and (3) which equipment is used.
+
+
+1. **Dipole-Dipole (dpdp)** 
+    - **Description:** The most common profiling configuration.
+    - **Details:** For every transmitter station, multiple potential measurements are taken.
+
+2. **Pole-Dipole (pldp)**
+    - **Description:** Compared to dipole-dipole, it's more efficient as you only need to move one source electrode. This configuration offers deeper penetration but at the cost of a lower spatial resolution.
+
+3. **Pole-Pole (plpl)**
+    - **Description:** When compared to pole-dipole, this configuration is more efficient, offers even deeper penetration, but also has a lower spatial resolution.
+
+4. **Gradient Array**
+    - **Description:** This array allows for quick reconnaissance of vast areas. However, it provides limited depth information.
+
+5. **Schlumberger Sounding**
+    - **Description:** The distance, denoted as "a", is approximately one-tenth of distance "b".
+    - **Details:** For soundings, the value of "b" can remain constant, as long as "a" is much smaller than "b", and the measured potentials are of sufficient strength to be recorded.
+
+6. **Wenner Sounding**
+    - **Description:** Throughout all measurements, the three spacings between electrodes are consistently maintained.
+    - **Details:** For soundings, every electrode has to be relocated for each new data point.
 
 <figure id="fig07;">
     <a name="fig07"></a>
@@ -472,13 +491,21 @@ $$
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.7: .
+            Fig.7: Geophysical Array Configurations and Their Characteristics.
         </strong>
     </figcaption>
 <!-- <a href="#fig11">Figure 11</a> -->
 </figure>
 
 <h3>4.2) Apparent Resistivities</h3>
+
+<p>
+	Please cite
+
+	Data — Electromagnetic Geophysics. (n.d.). https://em.geosci.xyz/content/geophysical_surveys/dcr/data.html. Accessed 19 September 2023, 
+</p>
+
+Pseudosections are often used to visualize data from 2D profiles. To account for the fact that measurements with larger electrode separations sample deeper portions of the earth, lines at $45\degree$, are drawn from the mid-points of the current and potential electrode pairs and the datum is plotted at the intersection of these lines. In cases where a pole transmitter or receiver is used, the $45\degree$ lines are drawn directly from the electrode location. The figure below shows how an apparent resistivity pseudosection is built for a simple dipole-dipole profile.
 
 <figure id="fig08;">
     <a name="fig08"></a>
@@ -488,13 +515,34 @@ $$
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.8: .
+            Fig.8: Pseudosection.
         </strong>
     </figcaption>
 <!-- <a href="#fig11">Figure 11</a> -->
 </figure>
 
+Plotting apparent resistivities, as pseudosections or in plan-view maps, is informative. The images are useful for recognizing data outliers, bad electrodes, and validating normalizations that might have been applied to the data. In addition, they sometimes provide valuable information about earth structure.
 
+As an illustration, <a href="#fig09">Figure 9</a> (a) shows an earth model consisting of a single prism ($\displaystyle \rho =10\ \Omega \cdot m$) buried in a uniform halfspace ($\displaystyle \rho =100\ \Omega \cdot m$). A dipole-dipole survey is carried out along a line that passes directly above the conductive prism. The resulting pseudosection is shown in a <a href="#fig09">Figure 9</a> (b). The prism is manifested as a region of lower apparent resistivity in the center of the image and there are wings extending outwards and downward. The apex of the image can be used to estimate the horizontal location of the prism but the depth to the body is less evident since the vertical scale of the pseudosection is in n-values and not in meters.
+
+Despite the above success, the situation worsens if the earth is more complex. This is illustrated in <a href="#fig09">Figure 9</a> (c) where some near-surface inhomogeneities are added. The same dipole-dipole survey is carried out and resultant pseudosection is shown in <a href="#fig09">Figure 9</a> (d). The response of the prism is masked and attempting to infer existence and location of the prism is extremely challenging.
+
+<figure id="fig09;">
+    <a name="fig09"></a>
+    <div style="text-align: center; padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1wHrrpsULxyBD4gP6R5fGdGI7pVdim4gN"
+        alt="fig09" style="max-width:100%;" class="center">
+    </div>
+    <figcaption>
+    <strong style='color:#ade4f0'>
+        Fig.9: Apparent Resistivity Modeling.
+    </strong>
+    (a) Vertical section through a simple conductive prism (&rho; = <strong>10 Ω⋅m</strong>) buried in a homogeneous halfspace <strong>&rho; = 100 Ω⋅m</strong>. Source and receiver locations for a dipole-dipole survey are shown for reference. (b) Pseudosection of apparent resistivity calculated from the synthetic DCR survey. (c) Vertical section through a more complicated resistivity model with near-surface inhomogeneities added and (d) resulting pseudosection of apparent resistivity.
+    </figcaption>
+<!-- <a href="#fig11">Figure 11</a> -->
+</figure>
+
+<h3>4.3) Case Study</h3>
 
 
 </body>
