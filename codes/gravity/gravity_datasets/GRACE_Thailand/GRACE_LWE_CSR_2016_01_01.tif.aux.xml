@@ -1,0 +1,12 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>lwe_thickness_csr</Description>
+    <Metadata>
+      <MDI key="STATISTICS_MAXIMUM">7.374927520752</MDI>
+      <MDI key="STATISTICS_MEAN">-2.7764059055883</MDI>
+      <MDI key="STATISTICS_MINIMUM">-8.6794862747192</MDI>
+      <MDI key="STATISTICS_STDDEV">4.6135155680408</MDI>
+      <MDI key="STATISTICS_VALID_PERCENT">54.17</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>
