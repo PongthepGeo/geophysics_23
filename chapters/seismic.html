@@ -13,9 +13,115 @@
 
 <h3>1) Introduction</h3>
 
-<div style="padding: 20px 0;">
-    <img src="https://drive.google.com/uc?id=1UOt1QXT6GZrRV1CaL6-GtQVI4bCSufVt" alt="pipeline" style="max-width:100%;">
-</div>
+<p>
+	Please cite
+
+	Seismic survey | Description, Methods, & Facts | Britannica. (n.d.). https://www.britannica.com/science/seismic-survey. Accessed 4 October 2023, 
+</p>
+
+seismic survey, method of investigating subterranean structure, particularly as related to exploration for petroleum, natural gas, and mineral deposits. The technique is based on determining the time interval that elapses between the initiation of a seismic wave at a selected shot point (the location where an explosion generates seismic waves) and the arrival of reflected or refracted impulses at one or more seismic detectors. Seismic air guns are commonly used to initiate the seismic waves. This technique has largely replaced the practice of exploding dynamite underground. Electric vibrators or falling weights (thumpers) may also be employed at sites where an underground explosion might cause damage—e.g., where caverns are present. Upon arrival at the detectors, the amplitude and timing of waves are recorded to give a seismogram (record of ground vibrations).
+
+Generally, the density of rocks near the surface of Earth increases with depth. Seismic waves initiated at a shot point at or near the surface may reach the receiving point by reflection, refraction, or both. When the shot point is close to the receiving point, reflected waves usually reach the receiving point first. At greater distances, however, the seismic pulse travels faster by the refraction path because its velocity is greater along the top of the lower, denser layer than it is through the upper layer; in this case, the refracted wave arrives first.
+
+Interpretation of the depths and media reached by seismic waves thus depends on the distance between shot points and receiving points and the densities of the strata. The results of a seismic survey may be presented in the form of a cross-sectional drawing of the subsurface structures as if cut by a plane through the shot point, the detector, and Earth’s centre. Such drawings are called seismic profiles.
+
+<figure id="fig1">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1ZlU8jPgJgYA-HHKGA71f1qVR4hUFuyv2"
+        alt="fig 1" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.1: Seismic Survey.   
+        </strong>
+        The Vibroseis, a seismic source, generates energy by vibrating a heavy metal weight at a targeted frequency range, aiming to transmit substantial energy into the Earth's subsurface. As this energy propagates through various geological layers, it encounters different materials and interfaces, causing reflections of the energy back to the surface. Geophones, positioned on the surface, record these reflections. Subsequent analysis of the data produces an image of the subsurface, revealing a geological image. This method offers a non-invasive technique to explore and understand the geological structures beneath the Earth's surface.
+	</figcaption>
+</figure>
+
+<h4>1.1) Understanding Seismic Image</h4>
+
+When comparing seismic images with photographic images, it's essential to note the significant disparities in resolution. The resolution effectively describes an image's detail and is often considerably higher in photographic images than seismic images. 
+
+Photographic imagery is dependent on the interaction of light waves with objects. This interaction occurs when light waves from a source, such as the Sun, propagate to the objects and reflect back to the camera sensor, where they are recorded. Because the waves travel through the air, they experience minimal attenuation and maintain their high frequencies, resulting in high-resolution images.
+
+Seismic images inherently possess lower resolution due to the nature of the seismic waves and the medium they travel through, compared to photographic images. The seismic waves used for imaging typically fall within a lower frequency range, such as 5-80 Hz for vibroseis and 10-300 Hz for airguns used in marine exploration. These mechanical waves propagate through the Earth's strata, which are characterized by high-attenuation properties that result from the complex and heterogeneous nature of geological formations. This medium, consisting of rocks and various substrates, tends to absorb and scatter the seismic energy, thereby reducing the quality and resolution of the returned signal that is eventually used for imaging the subsurface structures. On the other hand, photographic images are formed by electromagnetic waves traveling through a low attenuation medium, such as air, resulting in higher resolution.
+
+<figure id="fig2a">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1J1Mi9X3CATwXD4xcsXzEUR4Tj6s_BAJX"
+        alt="fig 2a" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.2A: Photographic Image with a Single Trace.   
+        </strong>
+        The high-resolution image indicates a detail preserving, in which we can see features clearly, such as regolith boundaries. The 1D signal values represent an example of the data contained, and it can be visualized as a graph showing amplitude variation with depth. Note only the green channel is shown here.
+	</figcaption>
+</figure>
+
+<figure id="fig2b">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1RPknBuIC8JhPPh0bYfCihyrn2DPIIRhW"
+        alt="fig 2b" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.2B: Seismic Image with a Single Trace.   
+        </strong>
+        In the field of subsurface exploration, it is observed that waves attenuate considerably as they propagate through different materials of the Earth. This attenuation is more pronounced than in waves travelling through air, leading to a loss of energy and detail. Consequently, seismic images show lower resolution. To demonstrate this difference, we can compare a high-resolution photometric image (depicted in green) to a low-resolution seismic image (in cyan). The high-resolution image has a more intricate "zigzag" pattern in the trace, which suggests that it retains more detail.
+	</figcaption>
+</figure>
+
+<h4>1.2) Understanding Seismic Trace</h4>
+
+To delve into the concept of seismic resolution, it is pivotal to first comprehend the principles of simple harmonic motion. Once a foundational understanding of measuring simple harmonic forms is established, we can enhance our knowledge by examining the Fourier Transform, enabling a richer comprehension of how stacking multiple harmonic forms contributes to a clearer and more precise resolution in seismic data analysis.
+
+<h5>1.2.1) Simple Harmonic</h5>
+
+Let's start by exploring the simple harmonic forms of sine and cosine functions. These functions oscillate in nearly identical patterns, but they have a distinct phase difference, which can be described in terms of radians or degrees. Understanding these units of measurement is essential when considering the phase shift between these two functions.
+
+<figure id="fig3">
+    <div style="padding: 20px 0;">
+        <img src="https://drive.google.com/uc?id=1XuT2Z8jpRD7Aljemja6oYYEh3X3MkkhJ"
+        alt="fig 3" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.3: Sine and Cosine Function.   
+        </strong>
+	</figcaption>
+</figure>
+
+If we take a snapshot of the <a href="#fig3">Figure 3</a>, we can use it to explain phase angle, amplitude, wavelength, and frequency.
+
+$$$
+\begin{align*}
+    y(t) &= A \cdot \sin(2\pi f t + \phi) \tag{1} \\
+    A &= \text{Amplitude} \\
+    f &= \text{Frequency} \\
+    t &= \text{Time} \\
+    \phi &= \text{Phase}
+\end{align*}
+$$$
+
+
+<h3>2) Seismic Waves</h3>
+
+<p>
+	Please cite
+
+	https://web.ics.purdue.edu/~braile/edumod/waves/WaveDemo.htm. Accessed 6 October 2023 
+</p>
+
+<h4>2.1) Seismic Wave Characteristics</h4>
+
+<h5>2.1.1) P-waves</h5>
+
+<h3>3) Acoustic Wave Phenomena</h3>
+
+<h4>3.1) Overview</h4>
+
+<h4>3.2) Diffreaction</h4>
 
 </body>
 </html>
