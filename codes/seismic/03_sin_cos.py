@@ -6,11 +6,12 @@ import matplotlib.pyplot as plt
 amplitude = 2  # no unit
 frequency = 25 # Hz
 time = np.linspace(0, np.pi/32, 1000) # second
-phase = np.pi/2 # where to start at time
+phase = 90 # degrees, equivalent to np.pi/2 radians
 
 #-----------------------------------------------------------------------------------------#
 
-y = amplitude*np.sin(2*np.pi*frequency*time + phase)
+# NOTE np.sin require input in radians
+y = amplitude*np.sin(2*np.pi*frequency*time + np.deg2rad(phase))  # converting phase to radians
 
 #-----------------------------------------------------------------------------------------#
 
