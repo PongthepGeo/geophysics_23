@@ -1,6 +1,17 @@
 #-----------------------------------------------------------------------------------------#
+import os
+from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
+#-----------------------------------------------------------------------------------------#
+
+image_path = "data/resolution_photo.png"
+slice_index = 770 
+output_folder = "image_out"
+
+#-----------------------------------------------------------------------------------------#
+# import numpy as np
+# import matplotlib.pyplot as plt
 from scipy import signal
 import cv2
 from scipy.ndimage import gaussian_filter
@@ -75,5 +86,12 @@ def photo2seismic(img, slice_index, output_folder):
         ax[1].legend()  # Adding a legend
         plt.tight_layout()
         # plt.savefig(output_folder + "/seismic_resolution.svg", format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
-        # plt.show()
-        return trace
+        plt.show()
+        
+#-----------------------------------------------------------------------------------------#
+
+img = Image.open(image_path)
+img_array = np.array(img)
+photo2seismic(img_array, slice_index, output_folder)
+
+#-----------------------------------------------------------------------------------------#
