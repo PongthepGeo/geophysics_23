@@ -11,27 +11,27 @@ print("Using device:", device)
 
 #-----------------------------------------------------------------------------------------#
 
-# NOTE Predefine parameters
-sandstone = 2500                 # velocity in m/s
-ny, nx = 1000, 1000              # model size
-time_steps = [80, 120, 140, 180] # snapshot of wave propagation (ms)
-freq = 25                        # Frequency of the source in Hz 
-dx = 4.0                         # Spatial sampling interval (distance between grid points) in meters 
-dt = 0.004                       # Temporal sampling interval (time step) in seconds
+# NOTE Create a velocity model	
+sandstone = 2500                  # velocity in m/s
+limestone = 3500                  # velocity in m/s
+ny, nx = 500, 500                 # model size
+time_steps = [100, 120, 140, 160] # snapshot of wave propagation (ms)
+freq = 25                         # Frequency of the source in Hz 
+dx = 4.0                          # Spatial sampling interval in meters 
+dt = 0.004                        # Temporal sampling interval in secondiiis
 output_folder = "image_out"
-
+TODO - sss
 #-----------------------------------------------------------------------------------------#
 
-# NOTE Create a source location
-source_location = torch.tensor([[[ny // 2, nx // 2]]]).to(device)
-# NOTE Create a velocity model	
+source_location = torch.tensor([[[0, nx // 2]]]).to(device)
+
 vp = sandstone * torch.ones(ny, nx)
-vp = torch.transpose(vp, 0, 1)  # Transpose the model
+vp[int(ny // 2):, :] = limestone
 vp = vp.to(device)
 
 #-----------------------------------------------------------------------------------------#
 
-# NOTE Plot the wave propagation
+# Plot the wave propagation
 U.plot_wave_propagation(vp, dx, dt, freq, time_steps, device, source_location, output_folder)
 
 #-----------------------------------------------------------------------------------------#

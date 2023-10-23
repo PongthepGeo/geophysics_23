@@ -150,15 +150,15 @@ Contrasting with DFT:
 The DFT is defined by the formula:
 
 $$$
-\[ X_k = \sum_{n=0}^{N-1} x_n \cdot e^{-i2\pi kn/N} \]
+X_k = \sum_{n=0}^{N-1} x_n \cdot e^{-i2\pi kn/N} \tag{3}
 $$$
 
 where:
-- \(X_k\) are the DFT coefficients (output of the DFT),
-- \(x_n\) are the input sequence values,
-- \(N\) is the total number of samples,
-- \(k\) is the index of the DFT output, and
-- \(i\) is the imaginary unit.
+- $X_k$ are the DFT coefficients (output of the DFT),
+- $x_n$ are the input sequence values,
+- $N$ is the total number of samples,
+- $k$ is the index of the DFT output, and
+- $i$ is the imaginary unit.
 
 This transformation is used when the function \(f(t)\) is sampled at discrete points in time (or space) and is assumed to be periodic for the purpose of the analysis.
 
@@ -248,12 +248,12 @@ Seismic exploration primarily relies on P- and S-waves because subsurface condit
 
 <h3>3) Acoustic Wave Phenomena</h3>
 
-Primary (P-waves) are synonymous with acoustic waves, sound waves, and compressional waves, and they can traverse a variety of Earth's materials, including gaseous mediums. Conversely, secondary waves (S-waves) struggle to propagate through liquid substrates, stemming from the inherent transverse motion of such materials and their absence of shear planes. The (two-way) wave equation formulated in a second-order partial differential equation can be expressed as <a href="#eq3">Equation 3</a>.
+Primary (P-waves) are synonymous with acoustic waves, sound waves, and compressional waves, and they can traverse a variety of Earth's materials, including gaseous mediums. Conversely, secondary waves (S-waves) struggle to propagate through liquid substrates, stemming from the inherent transverse motion of such materials and their absence of shear planes. The (two-way) wave equation formulated in a second-order partial differential equation can be expressed as <a href="#eq4">Equation 4</a>.
 
 $$$
-\frac{\partial ^{2} y}{\partial t^{2}} =c^{2} \cdot \frac{\partial ^{2} y}{\partial x^{2}} \tag{3}
+\frac{\partial ^{2} y}{\partial t^{2}} =c^{2} \cdot \frac{\partial ^{2} y}{\partial x^{2}} \tag{4}
 $$$
-<div id="eq3"></div>
+<div id="eq4"></div>
 
 $$$
 \begin{align*}
@@ -295,7 +295,7 @@ $$$
 
 <figure id="fig8">
     <div style="padding: 20px 0; text-align: center">
-        <img src="https://drive.google.com/uc?id=1BbkY6kaZbcIjPw2u5cQT9QTEc4Ic9V7F"
+        <img src="https://drive.google.com/uc?id=1ci9gKf30kG5GxE-sn1OnqbnKK-IcYnUm"
         alt="fig 8" style="max-width:100%;">
     </div>
     <figcaption>
@@ -305,21 +305,93 @@ $$$
 	</figcaption>
 </figure>
 
-<h4>3.1) Reflection</h4>
+<h4>3.1) Wave Phenomena: Reflection</h4>
 
-<figure id="fig8">
+<figure id="fig9">
     <div style="padding: 20px 0; text-align: center">
-        <img src="https://drive.google.com/uc?id=1WDcVSC_z-0A23W_qTT0cg68ubKL_1Hmu"
-        alt="fig 8" style="max-width:100%;">
+        <img src="https://drive.google.com/uc?id=1-D6v3gbA1dH1Sih9zJAYwspNxsEKP7XS"
+        alt="fig 9" style="max-width:100%;">
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.8: Spherical waves coming from a point source (https://en.wikipedia.org/wiki/Wave_equation).   
+            Fig.9 2D Layers Modeling: 
+        </strong>
+	</figcaption>
+</figure>
+
+<figure id="fig10">
+    <div style="padding: 20px 0; text-align: center">
+        <img src="https://drive.google.com/uc?id=1H57NtrBBjAl5QpfSnv6M3ynsLp5Nn6xA"
+        alt="fig 10" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.10 Multiple: 
+        </strong>
+	</figcaption>
+</figure>
+
+OK, challenge yourself.
+
+<figure id="fig11">
+    <div style="padding: 20px 0; text-align: center">
+        <img src="https://drive.google.com/uc?id=1bemzlGc-cbmg9tEbDJKTGxJKK4GhS7Zw"
+        alt="fig 11" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.11 Box: 
+        </strong>
+	</figcaption>
+</figure>
+
+<figure id="fig12">
+    <div style="padding: 20px 0; text-align: center">
+        <img src="https://drive.google.com/uc?id=15I8n-df8HFwuQ-O0aTWT2386aVAwV7Xe"
+        alt="fig 12" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.12 Receivers: 
         </strong>
 	</figcaption>
 </figure>
 
 <h4>3.2) Diffraction</h4>
+
+<p>
+	Please cite
+
+	Huygens–Fresnel principle. (2023, October 19). In Wikipedia. Retrieved from https://en.wikipedia.org/w/index.php?title=Huygens%E2%80%93Fresnel_principle&oldid=1180841799
+</p>
+
+The Huygens–Fresnel principle (named after Dutch physicist Christiaan Huygens and French physicist Augustin-Jean Fresnel) states that every point on a wavefront is itself the source of spherical wavelets, and the secondary wavelets emanating from different points mutually interfere. The sum of these spherical wavelets forms a new wavefront. As such, the Huygens-Fresnel principle is a method of analysis applied to problems of luminous wave propagation both in the far-field limit and in near-field diffraction as well as reflection.
+
+<figure id="fig13">
+    <div style="padding: 20px 0; text-align: center">
+        <img src="https://drive.google.com/uc?id=1GRdrho_CIXIO6UiGOuwDjUaKWhoaSSMS"
+        alt="fig 13" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.13: Diffraction.   
+        </strong>
+        Diffraction of a plane wave when the slit width equals the wavelength.
+	</figcaption>
+</figure>
+
+<figure id="fig14">
+    <div style="padding: 20px 0; text-align: center">
+        <img src="https://drive.google.com/uc?id=1i2aNQx8175D_BTlgHNGHaWybRwXG3eDK"
+        alt="fig 14" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.14: Diffraction.   
+        </strong>
+        Diffraction of a plane wave when the slit width equals the wavelength.
+	</figcaption>
+</figure>
 
 </body>
 </html>

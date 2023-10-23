@@ -11,27 +11,31 @@ print("Using device:", device)
 
 #-----------------------------------------------------------------------------------------#
 
-# NOTE Predefine parameters
-sandstone = 2500                 # velocity in m/s
-ny, nx = 1000, 1000              # model size
-time_steps = [80, 120, 140, 180] # snapshot of wave propagation (ms)
-freq = 25                        # Frequency of the source in Hz 
-dx = 4.0                         # Spatial sampling interval (distance between grid points) in meters 
-dt = 0.004                       # Temporal sampling interval (time step) in seconds
+# NOTE Create a velocity model	
+salt = 4500  # background velocity in m/s
+box_velocity = 1500  # velocity in m/s for the box
+ny, nx = 500, 500
+box_start_x, box_end_x = 200, 300
+box_start_y, box_end_y = 300, 400
+time_steps = [85, 95, 105, 115] # snapshots of wave propagation (ms)
+freq = 25  # Frequency of the source in Hz 
+dx = 4.0  # Spatial sampling interval in meters 
+dt = 0.004  # Temporal sampling interval in seconds
 output_folder = "image_out"
 
 #-----------------------------------------------------------------------------------------#
 
-# NOTE Create a source location
-source_location = torch.tensor([[[ny // 2, nx // 2]]]).to(device)
-# NOTE Create a velocity model	
-vp = sandstone * torch.ones(ny, nx)
-vp = torch.transpose(vp, 0, 1)  # Transpose the model
+source_location = torch.tensor([[[0, nx // 2]]]).to(device)
+
+vp = salt * torch.ones(ny, nx)
+vp[box_start_y:box_end_y, box_start_x:box_end_x] = box_velocity
 vp = vp.to(device)
 
 #-----------------------------------------------------------------------------------------#
 
-# NOTE Plot the wave propagation
-U.plot_wave_propagation(vp, dx, dt, freq, time_steps, device, source_location, output_folder)
+# Plot the wave propagation
+U.box(vp, dx, dt, freq, time_steps, device, source_location,
+      box_start_x, box_start_y, box_end_x, box_end_y,
+	output_folder)
 
 #-----------------------------------------------------------------------------------------#
