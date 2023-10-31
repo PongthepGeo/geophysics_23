@@ -34,7 +34,7 @@ Interpretation of the depths and media reached by seismic waves thus depends on 
 		<strong style='color:#ade4f0'>
             Fig.1: Seismic Survey.   
         </strong>
-        The Vibroseis, a seismic source, generates energy by vibrating a heavy metal weight at a targeted frequency range, aiming to transmit substantial energy into the Earth's subsurface. As this energy propagates through various geological layers, it encounters different materials and interfaces, causing reflections of the energy back to the surface. Geophones, positioned on the surface, record these reflections. Subsequent analysis of the data produces an image of the subsurface, revealing a geological image. This method offers a non-invasive technique to explore and understand the geological structures beneath the Earth's surface.
+    The Vibroseis, a seismic source, generates energy by vibrating a heavy metal weight at a targeted frequency range, aiming to transmit substantial energy into the Earth's subsurface. As this energy propagates through various geological layers, it encounters different materials and interfaces, causing reflections of the energy back to the surface. Geophones, positioned on the surface, record these reflections. Subsequent analysis of the data produces an image of the subsurface, revealing a geological image. This method offers a non-invasive technique to explore and understand the geological structures beneath the Earth's surface.
 	</figcaption>
 </figure>
 
@@ -55,7 +55,7 @@ Seismic images inherently possess lower resolution due to the nature of the seis
 		<strong style='color:#ade4f0'>
             Fig.2A: Photographic Image with a Single Trace.   
         </strong>
-        The high-resolution image indicates a detail preserving, in which we can see features clearly, such as regolith boundaries. The 1D signal values represent an example of the data contained, and it can be visualized as a graph showing amplitude variation with depth. Note only the green channel is shown here.
+    The high-resolution image indicates a detail preserving, in which we can see features clearly, such as regolith boundaries. The 1D signal values represent an example of the data contained, and it can be visualized as a graph showing amplitude variation with depth. Note only the green channel is shown here.
 	</figcaption>
 </figure>
 
@@ -68,7 +68,7 @@ Seismic images inherently possess lower resolution due to the nature of the seis
 		<strong style='color:#ade4f0'>
             Fig.2B: Seismic Image with a Single Trace.   
         </strong>
-        In the field of subsurface exploration, it is observed that waves attenuate considerably as they propagate through different materials of the Earth. This attenuation is more pronounced than in waves travelling through air, leading to a loss of energy and detail. Consequently, seismic images show lower resolution. To demonstrate this difference, we can compare a high-resolution photometric image (depicted in green) to a low-resolution seismic image (in cyan). The high-resolution image has a more intricate "zigzag" pattern in the trace, which suggests that it retains more detail.
+    In the field of subsurface exploration, it is observed that waves attenuate considerably as they propagate through different materials of the Earth. This attenuation is more pronounced than in waves travelling through air, leading to a loss of energy and detail. Consequently, seismic images show lower resolution. To demonstrate this difference, we can compare a high-resolution photometric image (depicted in green) to a low-resolution seismic image (in cyan). The high-resolution image has a more intricate "zigzag" pattern in the trace, which suggests that it retains more detail.
 	</figcaption>
 </figure>
 
@@ -202,7 +202,7 @@ The DFT is fundamental to many digital signal processing applications. It enable
 	https://web.ics.purdue.edu/~braile/edumod/waves/WaveDemo.htm. Accessed 6 October 2023 
 </p>
 
-The main seismic wave types are Compressional (P), Shear (S), Rayleigh (R), and Love (L) waves.  P and S waves are often called body waves because they propagate outward in all directions from a source (such as an earthquake) and travel through the interior of the Earth.  In the animations shown here, the P and S waves are shown propagating horizontally, parallel to the Earth’s surface.  Love and Rayleigh waves are surface waves and propagate approximately parallel to the Earth’s surface.  Although surface wave motion penetrates to significant depth in the Earth, these types of waves do not propagate directly through the Earth’s interior.  Descriptions of wave characteristics and particle motions for the four wave types are given in Table below. 
+The main seismic wave types are Compressional (P), Shear (S), Rayleigh (R), and Love (L) waves.  P and S waves are often called body waves because they propagate outward in all directions from a source (such as an earthquake) and travel through the interior of the Earth.  In the animations shown here, the P (<a href="#fig6">Figure 6</a>) and S (<a href="#fig7">Figure 7</a>) waves are shown propagating horizontally, parallel to the Earth's surface.  Love and Rayleigh waves are surface waves and propagate approximately parallel to the Earth’s surface.  Although surface wave motion penetrates to significant depth in the Earth, these four types of waves do not propagate directly through the Earth’s interior.  Descriptions of wave characteristics and particle motions for the four-wave types are given in the Table below. 
 
 | Wave Type (and names) | Particle Motion | Typical Velocity | Other Characteristics |
 |-----------------------|-----------------|------------------|-----------------------|
@@ -227,12 +227,13 @@ In the <a href="#fig6">Figure 6</a> illustrating P-wave propagation, the transmi
 		<strong style='color:#ade4f0'>
             Fig.6: P-waves.   
         </strong>
+    P-waves travel primarily along one axis, causing particles in their path to oscillate with alternating compression and dilation. This is often referred to as particle vibration.
 	</figcaption>
 </figure>
 
 <h5>2.1.2) S-waves</h5>
 
-Seismic exploration primarily relies on P- and S-waves because subsurface conditions are often approximated as elastic materials. As elastic disturbances propagate through a material, they cause temporary deformations: P-waves induce compressional motion in the direction of propagation, while S-waves result in transverse motion perpendicular to the propagation direction. Particularly on Earth, its horizontally layered structure can lead to either vertical SV or horizontal SH shear motions. After the wave passes, the material reverts to its original shape, see the particle motion in <a href="#fig7">Figure 7</a>.
+S-waves propagate linearly along a distinct axis, but the induced particle displacements occur perpendicular to this propagation direction. These orthogonal oscillations manifest as vertical (SV) and horizontal (SH) motions relative to the wave's trajectory. Notably, Eath's materials such as gases and liquids lack the rigidity to support these shear motions, thereby inhibiting the transmission of S-waves through them.
 
 <figure id="fig7">
     <div style="padding: 20px 0;">
@@ -243,29 +244,23 @@ Seismic exploration primarily relies on P- and S-waves because subsurface condit
 		<strong style='color:#ade4f0'>
             Fig.7: S-waves.   
         </strong>
+    The element (black square) experiences shear and compressional stresses when the S-waves pass through.
 	</figcaption>
 </figure>
 
 <h3>3) Acoustic Wave Phenomena</h3>
 
-Primary (P-waves) are synonymous with acoustic waves, sound waves, and compressional waves, and they can traverse a variety of Earth's materials, including gaseous mediums. Conversely, secondary waves (S-waves) struggle to propagate through liquid substrates, stemming from the inherent transverse motion of such materials and their absence of shear planes. The (two-way) wave equation formulated in a second-order partial differential equation can be expressed as <a href="#eq4">Equation 4</a>.
+Primary (P-waves) are synonymous with acoustic waves, sound waves, and compressional waves, which can express as one-dimensional wave equation depicted as <a href="#eq4">Equation 4</a>. This equation describes how wave disturbances propagate through a medium over time. In this equation:
 
 $$$
 \frac{\partial ^{2} y}{\partial t^{2}} =c^{2} \cdot \frac{\partial ^{2} y}{\partial x^{2}} \tag{4}
 $$$
 <div id="eq4"></div>
 
-$$$
-\begin{align*}
-\partial  & =gradient.\\
-y & =\ the\ displacement\ of\ the\ wave.\\
-c & =\  wave speed, a\ crucial\ parameter\ that\ dictates\ how\ fast\ waves\ travel\ in\ the\ medium.\\
-t & =\ time.\\
-x & =\ the\ spatial\ coordinate.
-\end{align*}
-$$$
-
-<a href="#fig8">Figure 8</a> depicts spherical waves emanating uniformly from a singular point source. This illustration suggests that the waves spread seamlessly, radiating outwards with consistent intensity, indicative of their passage through a homogenous medium. Such a depiction implies a traversal through a homogeneous medium, suggesting that the parameter $c$ in the acoustic wave equation can be consistently defined using a singular value from the subsequent empirical table.
+- $y$ is the displacement of the medium at position $x$ and time $t$.
+- $c$ represents the wave speed in the medium. This parameter can emprically from laburatory shown as the table below.
+- The term $(\frac{\partial^2 y}{\partial t^2})$ describes the acceleration of the wave disturbance with respect to time. This term can be thought of as how quickly the displacement of the medium changes over time.
+- The term $(c^2 \cdot \frac{\partial^2 y}{\partial x^2})$ describes the curvature of the wave disturbance in space, which gives an idea of how the wave shape changes over a small distance. The wave speed $c$ scales this spatial curvature to determine its effect on the temporal acceleration of the disturbance.
 
 <center>
 
@@ -293,6 +288,8 @@ $$$
 
 </center>
 
+The finite difference method is a widely recognized approach for addressing <a href="#eq4">Equation 4</a>. However, an in-depth discussion on solving and proving such equations falls outside the purview of this discussion. <a href="#fig8">Figure 8</a> showcases the progression of 2D acoustic wave propagation originating from a point source. As time advances, the wavefront expands, moving further from the point of origin.
+
 <figure id="fig8">
     <div style="padding: 20px 0; text-align: center">
         <img src="https://drive.google.com/uc?id=1ci9gKf30kG5GxE-sn1OnqbnKK-IcYnUm"
@@ -300,12 +297,15 @@ $$$
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.8: Spherical waves coming from a point source (https://en.wikipedia.org/wiki/Wave_equation).   
+            Fig.8: Acoustic Wave Propagation.   
         </strong>
+    The present simulation involves the propagation of P-waves from the point source (indicated by blue dots), which move outward through sandstone at a consistent velocity of 2,500 meters per second as time progresses.
 	</figcaption>
 </figure>
 
 <h4>3.1) Wave Phenomena: Reflection</h4>
+
+The provided illustration depicts the symmetrical propagation of P-waves (Primary or Pressure waves) as they spread through a homogeneous medium, originating from a central point. If these waves encounter a boundary, they can reflect back towards the surface. This phenomenon is appropriately termed "reflection." The uniformity of the medium ensures that the waves move consistently in all directions, and any deviations from this symmetrical pattern can indicate variations or anomalies within the medium.
 
 <figure id="fig9">
     <div style="padding: 20px 0; text-align: center">
@@ -314,10 +314,12 @@ $$$
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.9 2D Layers Modeling: 
+            Fig.9: 2D Layers Model: 
         </strong>
 	</figcaption>
 </figure>
+
+<h4>3.2) Wave Phenomena: Interbed Multiple</h4>
 
 <figure id="fig10">
     <div style="padding: 20px 0; text-align: center">
@@ -326,7 +328,7 @@ $$$
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.10 Multiple: 
+            Fig.10: Multiple: 
         </strong>
 	</figcaption>
 </figure>
@@ -345,6 +347,8 @@ OK, challenge yourself.
 	</figcaption>
 </figure>
 
+<h4>3.3) Receivers</h4>
+
 <figure id="fig12">
     <div style="padding: 20px 0; text-align: center">
         <img src="https://drive.google.com/uc?id=15I8n-df8HFwuQ-O0aTWT2386aVAwV7Xe"
@@ -352,12 +356,12 @@ OK, challenge yourself.
     </div>
     <figcaption>
 		<strong style='color:#ade4f0'>
-            Fig.12 Receivers: 
+            Fig.12: Receivers: 
         </strong>
 	</figcaption>
 </figure>
 
-<h4>3.2) Diffraction</h4>
+<h4>3.4) Diffraction</h4>
 
 <p>
 	Please cite
@@ -388,6 +392,19 @@ The Huygens–Fresnel principle (named after Dutch physicist Christiaan Huygens 
     <figcaption>
 		<strong style='color:#ade4f0'>
             Fig.14: Diffraction.   
+        </strong>
+        Diffraction of a plane wave when the slit width equals the wavelength.
+	</figcaption>
+</figure>
+
+<figure id="fig15">
+    <div style="padding: 20px 0; text-align: center">
+        <img src="https://drive.google.com/uc?id=1M-d0XXIrR0YhCcDm346uhKx4hfkpKeeI"
+        alt="fig 15" style="max-width:100%;">
+    </div>
+    <figcaption>
+		<strong style='color:#ade4f0'>
+            Fig.15: Diffraction.   
         </strong>
         Diffraction of a plane wave when the slit width equals the wavelength.
 	</figcaption>

@@ -15,12 +15,12 @@ print("Using device:", device)
 sandstone = 2500                  # velocity in m/s
 limestone = 3500                  # velocity in m/s
 ny, nx = 500, 500                 # model size
-time_steps = [100, 120, 140, 160] # snapshot of wave propagation (ms)
+time_steps = [150, 160, 170, 180] # snapshot of wave propagation (ms)
 freq = 25                         # Frequency of the source in Hz 
 dx = 4.0                          # Spatial sampling interval in meters 
 dt = 0.004                        # Temporal sampling interval in secondiiis
 output_folder = "image_out"
-TODO - sss
+
 #-----------------------------------------------------------------------------------------#
 
 source_location = torch.tensor([[[0, nx // 2]]]).to(device)

@@ -1,6 +1,5 @@
 #-----------------------------------------------------------------------------------------#
 import numpy as np
-import matplotlib
 import matplotlib.pyplot as plt
 from scipy import signal
 import cv2
@@ -9,6 +8,7 @@ import deepwave
 from deepwave import scalar
 import matplotlib.patches as patches
 #-----------------------------------------------------------------------------------------#
+import matplotlib
 params = {
 	'savefig.dpi': 300,  
 	'figure.dpi' : 300,
@@ -142,7 +142,7 @@ def plot_wave_propagation(vp, dx, dt, freq, time_steps, device, source_location,
 	for idx, (wavefield, nt) in enumerate(zip(wavefields, time_steps), 1):
 		plt.subplot(2, 2, idx)
 		wave_data = wavefield[0][0, :, :].cpu().numpy() # extract array from tensor and move to CPU
-		max_num, min_num = clip(wave_data, 98)
+		max_num, min_num = clip(wave_data, 100)
 		plt.imshow(wave_data, cmap='gray', vmin=min_num, vmax=max_num)
 		plt.scatter(source_x, source_y, c='blue', s=50)  # Plot blue dot at source location
 		plt.xlabel('X Distance (m)')
@@ -225,4 +225,20 @@ def plot_receivers(freq, dt, peak_time, n_shots, n_sources_per_shot, device, vp,
 		plt.title('Receiver')
 	plt.subplots_adjust(wspace=0.4, hspace=0.6)
 	# plt.savefig(output_folder + "/receivers_2_layers.svg", format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
+	plt.show()
+
+def rgba_to_grayscale(arr):
+    return 0.299 * arr[:,:,0] + 0.587 * arr[:,:,1] + 0.114 * arr[:,:,2]
+
+def normalize_data(arr, a=0, b=1):
+    min_val = np.min(arr)
+    max_val = np.max(arr)
+    return a + (b - a) * (arr - min_val) / (max_val - min_val)
+
+def photo2velocity(img_arr, min_velocity, max_velocity):
+	img_arr = rgba_to_grayscale(img_arr)
+	img_arr = normalize_data(img_arr, min_velocity, max_velocity)
+	fig = plt.figure(figsize=(10, 8))
+	plt.imshow(img_arr, cmap='gray')
+	plt.colorbar()
 	plt.show()
