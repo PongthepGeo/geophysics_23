@@ -12,8 +12,8 @@ print("Using device:", device)
 #-----------------------------------------------------------------------------------------#
 
 # NOTE Create a velocity model	
-sandstone = 2500                  # velocity in m/s
-limestone = 3500                  # velocity in m/s
+sandstone = 1500                  # velocity in m/s
+limestone = 4500                  # velocity in m/s
 ny, nx = 500, 500                 # model size
 time_steps = [150, 160, 170, 180] # snapshot of wave propagation (ms)
 freq = 25                         # Frequency of the source in Hz 

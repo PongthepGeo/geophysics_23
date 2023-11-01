@@ -14,8 +14,9 @@ print("Using device:", device)
 #-----------------------------------------------------------------------------------------#
 
 # NOTE Predefine parameters
-sandstone = 2500        # velocity in m/s
-limestone = 3700        # velocity in m/s
+sandstone = 4500        # velocity in m/s
+# limestone = 3700        # velocity in m/s
+salt = 4700        # velocity in m/s
 ny, nx = 1000, 1000     # model size
 limestone_start = 500   # depth
 time_steps = [250, 450] # snapshot of wave propagation (ms)
@@ -28,10 +29,20 @@ output_folder = "image_out"
 #-----------------------------------------------------------------------------------------#
 
 # NOTE Create a velocity model
+salt_end = ny // 3                 
+sandstone_end = 2 * ny // 3      
 vp = sandstone * torch.ones(ny, nx)
-vp[limestone_start:, :] = limestone
+vp[:salt_end, :] = salt
+vp[salt_end:sandstone_end, :] = sandstone
 vp = torch.transpose(vp, 0, 1)  # Transpose the model
 vp = vp.to(device)
+
+# vp[sandstone_end:, :] = salt
+# vp = vp.to(device)
+# vp = sandstone * torch.ones(ny, nx)
+# vp[limestone_start:, :] = limestone
+# vp = torch.transpose(vp, 0, 1)  # Transpose the model
+# vp = vp.to(device)
 
 #-----------------------------------------------------------------------------------------#
 
