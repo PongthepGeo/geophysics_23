@@ -5,7 +5,7 @@ setup(
     version='0.1',
     packages=find_packages(),
     install_requires=[
-        pip install deepwave
+        'deepwave'
     ],
     url='https://github.com/PongthepGeo/geophysics_23/',
     author='PongthepGeo',
@@ -13,4 +13,6 @@ setup(
     description='A seismic library',
 )
 
+
 # pip install git+https://github.com/PongthepGeo/geophysics_23.git#subdirectory=codes/seismic
+
