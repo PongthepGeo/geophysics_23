@@ -130,7 +130,7 @@ class SeismicWavefield:
             plt.ylabel('Time (sec)')
             plt.title('Receiver')
         plt.subplots_adjust(wspace=0.4, hspace=0.6)
-        # plt.savefig(self.output_folder + "/receivers_2_layers.svg", format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
+        plt.savefig(self.output_folder + "/receivers_complex.svg", format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
         plt.show()
 
 #-----------------------------------------------------------------------------------------#
