@@ -8,3 +8,5 @@
 SCG_project
 /docker/
 /codes/seismic/data/modeling/
+/codes/GPR/data/
+/codes/GPR/keep/
