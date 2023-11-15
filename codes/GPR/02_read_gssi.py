@@ -1,15 +1,13 @@
 #-----------------------------------------------------------------------------------------#
-import class_SEGY as C
+import class_read_GPR as C
 #-----------------------------------------------------------------------------------------#
 
-# NOTE Load the SEGY file
-segy_file = 'data/segy_profiles_migrated_final/Savannah_Highway_17_migrated.sgy'
-percent_clip = 90
+gssi_file = 'data/DZT_files/PONGT001.DZT'
+percent_clip = 100
 
 #-----------------------------------------------------------------------------------------#
 
-# NOTE Plot the SEGY file
-plotter = C.SEGYDataPlotter(segy_file)
+plotter = C.GPRDataPlotter(gssi_file)
 plotter.plot(percent_clip)  
 
 #-----------------------------------------------------------------------------------------#

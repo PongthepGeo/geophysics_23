@@ -9,6 +9,7 @@ import deepwave
 from deepwave import scalar
 import torch
 from PIL import Image 
+from scipy.ndimage import gaussian_filter
 #-----------------------------------------------------------------------------------------#
 import matplotlib
 params = {
@@ -77,60 +78,85 @@ class ImageToVelocity:
 #-----------------------------------------------------------------------------------------#
 
 class SeismicWavefield:
-    def __init__(self, freq, dt, peak_time, n_shots, n_sources_per_shot, device, vp, dx, source_locations,
-                 receiver_locations, time_steps, output_folder):
-        self.freq = freq
-        self.dt = dt
-        self.peak_time = peak_time
-        self.n_shots = n_shots
-        self.n_sources_per_shot = n_sources_per_shot
-        self.device = device
-        self.vp = vp
-        self.dx = dx
-        self.source_locations = source_locations
-        self.receiver_locations = receiver_locations
-        self.time_steps = time_steps
-        self.output_folder = output_folder
-    
-    def wavefield(self, nt):
-        source_amplitudes = deepwave.wavelets.ricker(self.freq, nt, self.dt, self.peak_time).reshape(1, 1, -1).to(dtype=torch.float64, device=self.device)
-        outputs = scalar(self.vp, self.dx, self.dt,
-                         source_amplitudes=source_amplitudes,
-                         source_locations=self.source_locations,
-                         receiver_locations=self.receiver_locations,
-                         accuracy=8,
-                         pml_width=[40, 40, 40, 40],
-                         pml_freq=self.freq)
-        wavefields, receiver_amplitudes = outputs[0], outputs[-1]  
-        return wavefields, receiver_amplitudes
+	def __init__(self, freq, dt, peak_time, n_shots, n_sources_per_shot, device, vp, dx, source_locations,
+				 receiver_locations, time_steps, output_folder):
+		self.freq = freq
+		self.dt = dt
+		self.peak_time = peak_time
+		self.n_shots = n_shots
+		self.n_sources_per_shot = n_sources_per_shot
+		self.device = device
+		self.vp = vp
+		self.dx = dx
+		self.source_locations = source_locations
+		self.receiver_locations = receiver_locations
+		self.time_steps = time_steps
+		self.output_folder = output_folder
+	
+	def wavefield(self, nt):
+		source_amplitudes = deepwave.wavelets.ricker(self.freq, nt, self.dt, self.peak_time).reshape(1, 1, -1).to(dtype=torch.float64, device=self.device)
+		outputs = scalar(self.vp, self.dx, self.dt,
+						 source_amplitudes=source_amplitudes,
+						 source_locations=self.source_locations,
+						 receiver_locations=self.receiver_locations,
+						 accuracy=8,
+						 pml_width=[40, 40, 40, 40],
+						 pml_freq=self.freq)
+		wavefields, receiver_amplitudes = outputs[0], outputs[-1]  
+		return wavefields, receiver_amplitudes
 
-    def plot_receivers(self):
-        plt.figure()
-        for i, nt in enumerate(self.time_steps):
-            wave_propagation, receiver_data = self.wavefield(nt)
-            wave_propagation = wave_propagation[0, :, :].cpu().numpy().T
-            receiver_data = receiver_data[0].cpu().numpy().T
-            # NOTE Wave Propagation
-            plt.subplot(2, 2, 2*i + 1)
-            y_max_wp = wave_propagation.shape[0] * self.dx * 0.001
-            x_max_wp = wave_propagation.shape[1] * self.dx * 0.001
-            max_wp, min_wp = U.clip(wave_propagation, 100)
-            plt.imshow(wave_propagation, aspect='auto', cmap='gray', origin='upper',
-                       extent=[0, x_max_wp, y_max_wp, 0], vmin=min_wp, vmax=max_wp)
-            plt.title(f"Wave Propagation: {nt*0.001} s")
-            plt.xlabel('Distance (km)')
-            plt.ylabel('Depth (km)')
-            # NOTE Receiver Data
-            plt.subplot(2, 2, 2*i + 2)
-            nt_seconds = nt * 0.001
-            max_rd, min_rd = U.clip(receiver_data, 99)
-            plt.imshow(receiver_data, aspect='auto', cmap='gray', origin='upper',
-                       extent=[0, x_max_wp, nt_seconds, 0], vmin=min_rd, vmax=max_rd)
-            plt.xlabel('Receiver Position (km)')
-            plt.ylabel('Time (sec)')
-            plt.title('Receiver')
-        plt.subplots_adjust(wspace=0.4, hspace=0.6)
-        plt.savefig(self.output_folder + "/receivers_complex.svg", format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
-        plt.show()
+	def plot_receivers(self):
+		plt.figure()
+		for i, nt in enumerate(self.time_steps):
+			wave_propagation, receiver_data = self.wavefield(nt)
+			wave_propagation = wave_propagation[0, :, :].cpu().numpy().T
+			receiver_data = receiver_data[0].cpu().numpy().T
+			# NOTE Wave Propagation
+			plt.subplot(2, 2, 2*i + 1)
+			y_max_wp = wave_propagation.shape[0] * self.dx * 0.001
+			x_max_wp = wave_propagation.shape[1] * self.dx * 0.001
+			max_wp, min_wp = U.clip(wave_propagation, 100)
+			plt.imshow(wave_propagation, aspect='auto', cmap='gray', origin='upper',
+					   extent=[0, x_max_wp, y_max_wp, 0], vmin=min_wp, vmax=max_wp)
+			plt.title(f"Wave Propagation: {nt*0.001} s")
+			plt.xlabel('Distance (km)')
+			plt.ylabel('Depth (km)')
+			# NOTE Receiver Data
+			plt.subplot(2, 2, 2*i + 2)
+			nt_seconds = nt * 0.001
+			max_rd, min_rd = U.clip(receiver_data, 99)
+			plt.imshow(receiver_data, aspect='auto', cmap='gray', origin='upper',
+					   extent=[0, x_max_wp, nt_seconds, 0], vmin=min_rd, vmax=max_rd)
+			plt.xlabel('Receiver Position (km)')
+			plt.ylabel('Time (sec)')
+			plt.title('Receiver')
+		plt.subplots_adjust(wspace=0.4, hspace=0.6)
+		plt.savefig(self.output_folder + "/receivers_complex.svg", format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
+		plt.show()
 
 #-----------------------------------------------------------------------------------------#
+
+class Image2Velocity:
+	def __init__(self, img_array, sigma):
+		self.img_array = np.array(img_array)
+		self.sigma = sigma
+
+	def plot_velocity(self, min_velocity, max_velocity, output_folder):
+		print("...Creating Velocity Model...")
+		self.img_array = U.rgba_to_grayscale(self.img_array)
+		self.img_array = U.normalize_data(self.img_array, min_velocity, max_velocity)
+		original_img_array = self.img_array.copy()
+		self.img_array = gaussian_filter(self.img_array, sigma=self.sigma)
+
+		fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(12, 6), gridspec_kw={'wspace': 0.1})
+		img1 = axes[0].imshow(original_img_array, cmap='rainbow')
+		axes[0].set_xlabel('Distance-X (pixel)')
+		axes[0].set_ylabel('Depth (pixel)')
+		axes[0].set_title('Original Velocity Model')
+		img2 = axes[1].imshow(self.img_array, cmap='rainbow')
+		axes[1].set_xlabel('Distance-X (pixel)')
+		axes[1].set_ylabel('Depth (pixel)')
+		axes[1].set_title('Smoothed Velocity Model')
+		cbar = fig.colorbar(img2, ax=axes.ravel().tolist(), orientation='horizontal', aspect=50)
+		cbar.set_label('velocity (m/s)')
+		plt.show()
