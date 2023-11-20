@@ -1,13 +1,7 @@
 #-----------------------------------------------------------------------------------------#
-import warnings
-warnings.filterwarnings('ignore', category=UserWarning)
-import numpy as np
-np.seterr(all='ignore')
-#-----------------------------------------------------------------------------------------#
 import sys
 sys.path.append('./Libs') 
 import classes as C
-# import utilities as U
 #-----------------------------------------------------------------------------------------#
 from PIL import Image
 import torch
@@ -20,15 +14,15 @@ print("Using device:", device)
 #-----------------------------------------------------------------------------------------#
 
 # NOTE Predine velocity model parameters
-image_path = 'data/modeling/dome_fault.png'
+image_path = 'data/modeling/tilting_03.png'
 minimum_velocity = 1500
-maximum_velocity = 4000
+maximum_velocity = 4500
 
 #-----------------------------------------------------------------------------------------#
 
 # NOTE Predine wave propagation parameters
 time_steps = [50, 70, 140, 200] # snapshot of wave propagation (ms)
-freq = 30                       # Frequency of the source in Hz 
+freq = 25                       # Frequency of the source in Hz 
 dx = 4.0                        # Spatial sampling interval in meters 
 dt = 0.004                      # Temporal sampling interval in seconds
 output_folder = "image_out"

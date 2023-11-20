@@ -10,6 +10,9 @@ from deepwave import scalar
 import torch
 from PIL import Image 
 from scipy.ndimage import gaussian_filter
+import os
+from tqdm import tqdm
+from deepwave import scalar_born
 #-----------------------------------------------------------------------------------------#
 import matplotlib
 params = {
@@ -147,7 +150,6 @@ class Image2Velocity:
 		self.img_array = U.normalize_data(self.img_array, min_velocity, max_velocity)
 		original_img_array = self.img_array.copy()
 		self.img_array = gaussian_filter(self.img_array, sigma=self.sigma)
-
 		fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(12, 6), gridspec_kw={'wspace': 0.1})
 		img1 = axes[0].imshow(original_img_array, cmap='rainbow')
 		axes[0].set_xlabel('Distance-X (pixel)')
@@ -159,4 +161,118 @@ class Image2Velocity:
 		axes[1].set_title('Smoothed Velocity Model')
 		cbar = fig.colorbar(img2, ax=axes.ravel().tolist(), orientation='horizontal', aspect=50)
 		cbar.set_label('velocity (m/s)')
+		plt.show()
+		return self.img_array
+
+#-----------------------------------------------------------------------------------------#
+
+class LoopSeismicWavefield:
+	def __init__(self, freq, dt, peak_time, n_shots, n_sources_per_shot, device, vp, dx,
+				 source_locations, receiver_locations):
+		self.freq = freq
+		self.dt = dt
+		self.peak_time = peak_time
+		self.n_shots = n_shots
+		self.n_sources_per_shot = n_sources_per_shot
+		self.device = device
+		self.vp = vp
+		self.dx = dx
+		self.source_locations = source_locations
+		self.receiver_locations = receiver_locations
+	
+	def loop_wavefield(self, nt):
+		source_amplitudes = deepwave.wavelets.ricker(self.freq, nt, self.dt, self.peak_time).reshape(1, 1, -1).to(dtype=torch.float64, device=self.device)
+		outputs = scalar(self.vp, self.dx, self.dt,
+						 source_amplitudes=source_amplitudes,
+						 source_locations=self.source_locations,
+						 receiver_locations=self.receiver_locations,
+						 accuracy=8,
+						 pml_width=[40, 40, 40, 40],
+						 pml_freq=self.freq)
+		wavefields, receiver_amplitudes = outputs[0], outputs[-1]  
+		return wavefields, receiver_amplitudes
+
+#-----------------------------------------------------------------------------------------#
+
+class Migration:
+	def __init__(self, vp, npy_folder, device, dx, dt, source_amplitudes, receiver_locations, freq):
+		self.vp = vp
+		self.npy_folder = npy_folder
+		self.device = device
+		self.dx = dx
+		self.dt = dt
+		self.freq = freq
+		self.source_amplitudes = source_amplitudes
+		self.receiver_locations = receiver_locations
+		self.scatter = torch.zeros_like(vp, requires_grad=True)
+
+	def setup_optimizer(self, optimizer_name='Adam', lr=1e-4):
+		if optimizer_name == 'SGD':
+			self.optimizer = torch.optim.SGD([self.scatter], lr=lr)
+		elif optimizer_name == 'RMSprop':
+			self.optimizer = torch.optim.RMSprop([self.scatter], lr=lr)
+		elif optimizer_name == 'Adagrad':
+			self.optimizer = torch.optim.Adagrad([self.scatter], lr=lr)
+		elif optimizer_name == 'AdamW':
+			self.optimizer = torch.optim.AdamW([self.scatter], lr=lr)
+		else:
+			self.optimizer = torch.optim.Adam([self.scatter], lr=lr)
+
+	def setup_loss_function(self, loss_fn_name='MSELoss'):
+		if loss_fn_name == 'CrossEntropyLoss':
+			self.loss_fn = torch.nn.CrossEntropyLoss()
+		elif loss_fn_name == 'BCEWithLogitsLoss':
+			self.loss_fn = torch.nn.BCEWithLogitsLoss()
+		elif loss_fn_name == 'NLLLoss':
+			self.loss_fn = torch.nn.NLLLoss()
+		elif loss_fn_name == 'L1Loss':
+			self.loss_fn = torch.nn.L1Loss()
+		else:
+			self.loss_fn = torch.nn.MSELoss()
+
+	def run_inversion(self, n_epochs, shot_interval, n_shots):
+		observed_scatter_files = [
+			os.path.join(self.npy_folder, f'shot_pixel_{i * shot_interval:04d}.npy') for i in range(n_shots)
+		]
+		observed_scatter_masked = [torch.tensor(np.load(f), device=self.device) for f in observed_scatter_files]
+
+		for epoch in tqdm(range(n_epochs), desc="Epochs"):
+			epoch_loss = 0
+			for shot_index in tqdm(range(n_shots), desc="Shots", leave=False):
+				current_source_position = shot_index * shot_interval
+				source_locations = torch.zeros(1, 1, 2, dtype=torch.long, device=self.device)
+				source_locations[0, 0, 0] = current_source_position
+
+				out = scalar_born(
+					self.vp, self.scatter, self.dx, self.dt,
+					source_amplitudes=self.source_amplitudes,
+					source_locations=source_locations,
+					receiver_locations=self.receiver_locations,
+					pml_freq=self.freq
+				)
+
+				observed_scatter_shot = observed_scatter_masked[shot_index]
+				loss = self.loss_fn(out[-1], observed_scatter_shot)
+				epoch_loss += loss.item()
+				loss.backward()
+
+			self.optimizer.step()
+			self.optimizer.zero_grad()
+			print(f'Epoch {epoch}, Loss: {epoch_loss}')
+
+		scatter_numpy = self.scatter.detach().cpu().numpy()
+		np.save(os.path.join(self.npy_folder, 'migration.npy'), scatter_numpy)
+
+	def load_and_clip_data(self, clip_percent=99):
+		migration_data = np.load(os.path.join(self.npy_folder, 'migration.npy'))
+		migration_data -= np.mean(migration_data)
+		migration_data /= np.max(np.abs(migration_data))
+		migration_data_clipped = migration_data[:, 130:] # Clip top image
+		print("Shape of migration_data_clipped:", migration_data_clipped.shape)
+		vmax_clip, vmin_clip = U.clip(migration_data_clipped, clip_percent)
+		plt.figure()
+		plt.imshow(migration_data_clipped.T, aspect='auto', cmap='gray', vmin=vmin_clip, vmax=vmax_clip)
+		plt.xlabel('Distance (pixel)')
+		plt.ylabel('Depth (m)')
+		plt.title('Migration')
 		plt.show()
