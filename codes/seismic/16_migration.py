@@ -15,19 +15,20 @@ print("Using device:", device)
 #-----------------------------------------------------------------------------------------#
 
 # NOTE Main define parameters
-image_path = 'data/modeling/tilting_03.png'
+image_path = 'data/modeling/gold.png'
 minimum_velocity = 1500
 maximum_velocity = 4500
-smooth = 20
+smooth = 40
 output_folder = "image_out"
 freq = 25               # Frequency of the source in Hz 
 dx = 4.0                # Spatial sampling interval in meters 
 dt = 0.004              # Temporal sampling interval in seconds
 peak_time = 1.5 / freq
-nt = 700
+# nt = 700
+nt = 400
 output_migration = 'migrated_image'
 shot_interval = 10      # Every 10 pixel will allocate 1 shot
-npy_folder = 'npy_folder'  # Load shot data from this folder
+npy_folder = 'npy_gold_folder'  # Load shot data from this folder
 optimizer_name = 'Adam'; lr=1e-4
 loss_fn_name = 'MSELoss'
 n_epochs = 1
@@ -71,9 +72,9 @@ source_amplitudes = deepwave.wavelets.ricker(freq, nt, dt, peak_time).reshape(1,
 
 # NOTE Computing migration
 inversion = C.Migration(vp, npy_folder, device, dx, dt, source_amplitudes, receiver_locations, freq)
-inversion.setup_optimizer(optimizer_name=optimizer_name, lr=lr)
-inversion.setup_loss_function(loss_fn_name=loss_fn_name)
-inversion.run_inversion(n_epochs=n_epochs, shot_interval=shot_interval, n_shots=n_shots)
-inversion.load_and_clip_data(clip_percent=99.8)
+# inversion.setup_optimizer(optimizer_name=optimizer_name, lr=lr)
+# inversion.setup_loss_function(loss_fn_name=loss_fn_name)
+# inversion.run_inversion(n_epochs=n_epochs, shot_interval=shot_interval, n_shots=n_shots)
+inversion.load_and_clip_data(clip_percent=99.5)
 
 #-----------------------------------------------------------------------------------------#

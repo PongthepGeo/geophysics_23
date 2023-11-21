@@ -267,7 +267,8 @@ class Migration:
 		migration_data = np.load(os.path.join(self.npy_folder, 'migration.npy'))
 		migration_data -= np.mean(migration_data)
 		migration_data /= np.max(np.abs(migration_data))
-		migration_data_clipped = migration_data[:, 130:] # Clip top image
+		# migration_data_clipped = migration_data[:, 130:] # Clip top image
+		migration_data_clipped = migration_data[:, 95:] # Clip top image
 		print("Shape of migration_data_clipped:", migration_data_clipped.shape)
 		vmax_clip, vmin_clip = U.clip(migration_data_clipped, clip_percent)
 		plt.figure()

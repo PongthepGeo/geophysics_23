@@ -14,7 +14,7 @@ print("Using device:", device)
 #-----------------------------------------------------------------------------------------#
 
 # NOTE Predine velocity model parameters
-image_path = 'data/modeling/tilting_03.png'
+image_path = 'data/modeling/gold.png'
 minimum_velocity = 1500
 maximum_velocity = 4500
 

@@ -8,7 +8,6 @@ from PIL import Image
 import torch
 import deepwave
 from deepwave import scalar
-# import matplotlib.pyplot as plt
 #-----------------------------------------------------------------------------------------#
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -17,12 +16,12 @@ print("Using device:", device)
 #-----------------------------------------------------------------------------------------#
 
 # NOTE Predefine velocity model parameters
-image_path = 'data/modeling/tilting_03.png'
+image_path = 'data/modeling/gold.png'
 minimum_velocity = 1500
 maximum_velocity = 4500
 # NOTE Predefine source and receiver parameters
 output_folder = "image_out"
-time_steps = [150, 250] # snapshot of wave propagation (ms)
+time_steps = [150, 400] # snapshot of wave propagation (ms)
 freq = 25               # Frequency of the source in Hz 
 dx = 4.0                # Spatial sampling interval in meters 
 dt = 0.004              # Temporal sampling interval in seconds

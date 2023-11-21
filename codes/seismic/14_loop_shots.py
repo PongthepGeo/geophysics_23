@@ -19,18 +19,19 @@ print("Using device:", device)
 #-----------------------------------------------------------------------------------------#
 
 # NOTE Predefine velocity model parameters
-image_path = 'data/modeling/tilting_03.png'
+image_path = 'data/modeling/gold.png'
 minimum_velocity = 1500
 maximum_velocity = 4500
-smooth = 10
+smooth = 5
 # NOTE Predefine source and receiver parameters
 output_folder = "image_out"
 freq = 25               # Frequency of the source in Hz 
 dx = 4.0                # Spatial sampling interval in meters 
 dt = 0.004              # Temporal sampling interval in seconds
 peak_time = 1.5 / freq
-nt = 700
-output_dir = 'npy_folder'
+# nt = 700
+nt = 400
+output_dir = 'npy_gold_folder'
 shot_interval = 10      # Every 10 pixel will allocate 1 shot
 
 #-----------------------------------------------------------------------------------------#
