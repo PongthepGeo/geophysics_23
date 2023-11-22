@@ -20,18 +20,22 @@ image_path = 'data/modeling/gold.png'
 minimum_velocity = 1500
 maximum_velocity = 4500
 # NOTE Predefine source and receiver parameters
-output_folder = "image_out"
 time_steps = [150, 400] # snapshot of wave propagation (ms)
 freq = 25               # Frequency of the source in Hz 
 dx = 4.0                # Spatial sampling interval in meters 
 dt = 0.004              # Temporal sampling interval in seconds
+# NOTE Output folder and save images
+output_folder = 'image_out'
+output_velocity_name = 'vp.png'
+output_receiver_name = 'receiver.png'
 
 #-----------------------------------------------------------------------------------------#
 
 # NOTE Image to velocity model conversion
 img = Image.open(image_path)
 img_processor = C.ImageToVelocity(img)
-velocity_array = img_processor.photo2velocity(minimum_velocity, maximum_velocity, output_folder)
+velocity_array = img_processor.photo2velocity(minimum_velocity, maximum_velocity,
+                                              output_folder, output_velocity_name, save=False)
 
 #-----------------------------------------------------------------------------------------#
 
@@ -67,7 +71,9 @@ receiver_locations[:, :, 0] = torch.arange(0, nx, d_receiver).long()[:n_receiver
 
 #-----------------------------------------------------------------------------------------#
 
-seismic_wavefield = C.SeismicWavefield(freq, dt, peak_time, n_shots, n_sources_per_shot, device, vp, dx, source_locations, receiver_locations, time_steps, output_folder)
-seismic_wavefield.plot_receivers()
+seismic_wavefield = C.SeismicWavefield(freq, dt, peak_time, n_shots, n_sources_per_shot,
+                                       device, vp, dx, source_locations, receiver_locations,
+                                       time_steps)
+seismic_wavefield.plot_receivers(output_folder, output_receiver_name, save=True)
 
 #-----------------------------------------------------------------------------------------#

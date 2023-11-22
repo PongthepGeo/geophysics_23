@@ -22,17 +22,18 @@ print("Using device:", device)
 image_path = 'data/modeling/gold.png'
 minimum_velocity = 1500
 maximum_velocity = 4500
-smooth = 5
+smooth = 5              # Smooth the velocity model, the higher the smoother (reduce scattering)
 # NOTE Predefine source and receiver parameters
 output_folder = "image_out"
 freq = 25               # Frequency of the source in Hz 
 dx = 4.0                # Spatial sampling interval in meters 
 dt = 0.004              # Temporal sampling interval in seconds
 peak_time = 1.5 / freq
-# nt = 700
-nt = 400
-output_dir = 'npy_gold_folder'
 shot_interval = 10      # Every 10 pixel will allocate 1 shot
+# nt = 700              # Number of time steps, how long wave propagates
+nt = 400
+# NOTE Output folder 
+output_dir = 'npy_gold_folder'
 
 #-----------------------------------------------------------------------------------------#
 
@@ -48,13 +49,14 @@ nx = vp_array.shape[1]
 
 #-----------------------------------------------------------------------------------------#
 
+# NOTE Create velocity model and locate source
 vp = torch.tensor(vp_array, dtype=torch.float64).to(device)
 vp = torch.transpose(vp, 0, 1)  # Transpose the model
 vp = vp.to(device)
 
 #-----------------------------------------------------------------------------------------#
 
-# Initialize source and receiver parameters
+# NOTE Source location (one sourc at the top center of the model)
 n_shots = nx // shot_interval  # Number of shots based on model width and interval of 10 pixels
 n_sources_per_shot = 1
 source_depth = 2
@@ -63,6 +65,7 @@ source_locations[..., 1] = source_depth
 
 #-----------------------------------------------------------------------------------------#
 
+# NOTE Receiver location (approximately 10 meters receiver interval)
 d_receiver = 3  # Receiver interval (grid points)
 n_receivers_per_shot = nx // d_receiver
 receiver_depth = 0
@@ -72,6 +75,7 @@ receiver_locations[0, :, 0] = torch.arange(0, nx, d_receiver).long()[:n_receiver
 
 #-----------------------------------------------------------------------------------------#
 
+# NOTE Compute wave propagation for each shot
 for i in tqdm(range(n_shots), desc="Computing shots"):
     current_source_position = i * shot_interval
     if current_source_position >= nx:

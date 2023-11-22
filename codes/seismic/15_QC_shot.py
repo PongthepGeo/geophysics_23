@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import os
 #-----------------------------------------------------------------------------------------#
 
-receiver_data = np.load('npy_gold_folder/shot_pixel_0500.npy')
+receiver_data = np.load('npy_gold_folder/shot_pixel_0100.npy')
 print("Shape of receiver_data:", receiver_data.shape)
 
 #-----------------------------------------------------------------------------------------#
