@@ -39,31 +39,31 @@ class ImageToVelocity:
 		self.img_arr = U.rgba_to_grayscale(self.img_arr)
 		self.img_arr = U.normalize_data(self.img_arr, min_velocity, max_velocity)
 		fig = plt.figure(figsize=(10, 8))
-		plt.imshow(self.img_arr, cmap='gray')
+		plt.imshow(self.img_arr, cmap='rainbow')
 		plt.title("Velocity Model")
 		cbar = plt.colorbar()
 		cbar.set_label('Velocity (m/s)')  # Add title to colorbar
 		if save:
 			save_name = output_folder + "/" + output_image_name
-			plt.savefig(save_name, format='png', bbox_inches='tight', pad_inches=0, transparent=True)
+			plt.savefig(save_name, format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
 			print("Velocity model saved as:", save_name)
 		plt.show()
 		return self.img_arr
 
-	def get_wavefield(self, vp, dx, dt, freq, nt, device, source_location):
+	def get_wavefield(self, vp, dx, dt, freq, nt, dtype, device, source_location):
 		peak_time = 1.5 / freq 
 		wavefields = scalar(vp, dx, dt,            
-							source_amplitudes = deepwave.wavelets.ricker(freq, nt, dt, peak_time).reshape(1, 1, -1).to(dtype=torch.float64, device=device),
+							source_amplitudes = deepwave.wavelets.ricker(freq, nt, dt, peak_time).reshape(1, 1, -1).to(dtype=dtype, device=device),
 							source_locations = source_location,  
 							accuracy = 8,    
 							pml_freq = freq) 
 		return wavefields
 
-	def plot_wave_propagation(self, vp, dx, dt, freq, time_steps, device, source_location,
+	def plot_wave_propagation(self, vp, dx, dt, freq, time_steps, dtype, device, source_location,
 		output_folder, output_image_name, save=False):
 		print("...Time Step Wavefield...")
 		plt.figure()
-		wavefields = [self.get_wavefield(vp, dx, dt, freq, nt, device, source_location) for nt in time_steps]
+		wavefields = [self.get_wavefield(vp, dx, dt, freq, nt, dtype, device, source_location) for nt in time_steps]
 		pml_thickness = 20
 		source_y = (source_location[0, 0, 0] + pml_thickness).item()
 		source_x = (source_location[0, 0, 1] + pml_thickness).item()
@@ -79,20 +79,21 @@ class ImageToVelocity:
 		plt.subplots_adjust(wspace=0.1, hspace=0.6)  
 		if save:
 			save_name = output_folder + "/" + output_image_name
-			plt.savefig(save_name, format='png', bbox_inches='tight', pad_inches=0, transparent=True)
+			plt.savefig(save_name, format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
 			print("Wave propagation saved as:", save_name)
 		plt.show()
 
 #-----------------------------------------------------------------------------------------#
 
 class SeismicWavefield:
-	def __init__(self, freq, dt, peak_time, n_shots, n_sources_per_shot, device, vp, dx, source_locations,
+	def __init__(self, freq, dt, peak_time, n_shots, n_sources_per_shot, dtype, device, vp, dx, source_locations,
 				 receiver_locations, time_steps):
 		self.freq = freq
 		self.dt = dt
 		self.peak_time = peak_time
 		self.n_shots = n_shots
 		self.n_sources_per_shot = n_sources_per_shot
+		self.dtype = dtype
 		self.device = device
 		self.vp = vp
 		self.dx = dx
@@ -101,7 +102,7 @@ class SeismicWavefield:
 		self.time_steps = time_steps
 	
 	def wavefield(self, nt):
-		source_amplitudes = deepwave.wavelets.ricker(self.freq, nt, self.dt, self.peak_time).reshape(1, 1, -1).to(dtype=torch.float64, device=self.device)
+		source_amplitudes = deepwave.wavelets.ricker(self.freq, nt, self.dt, self.peak_time).reshape(1, 1, -1).to(dtype=self.dtype, device=self.device)
 		outputs = scalar(self.vp, self.dx, self.dt,
 						 source_amplitudes=source_amplitudes,
 						 source_locations=self.source_locations,
@@ -140,7 +141,7 @@ class SeismicWavefield:
 		plt.subplots_adjust(wspace=0.4, hspace=0.6)
 		if save:
 			save_name = output_folder + "/" + output_receiver_name
-			plt.savefig(save_name, format='png', bbox_inches='tight', pad_inches=0, transparent=True)
+			plt.savefig(save_name, format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
 			print("Receivers saved as:", save_name)
 		plt.show()
 
@@ -174,13 +175,14 @@ class Image2Velocity:
 #-----------------------------------------------------------------------------------------#
 
 class LoopSeismicWavefield:
-	def __init__(self, freq, dt, peak_time, n_shots, n_sources_per_shot, device, vp, dx,
+	def __init__(self, freq, dt, peak_time, n_shots, n_sources_per_shot, dtype, device, vp, dx,
 				 source_locations, receiver_locations):
 		self.freq = freq
 		self.dt = dt
 		self.peak_time = peak_time
 		self.n_shots = n_shots
 		self.n_sources_per_shot = n_sources_per_shot
+		self.dtype = dtype
 		self.device = device
 		self.vp = vp
 		self.dx = dx
@@ -188,7 +190,7 @@ class LoopSeismicWavefield:
 		self.receiver_locations = receiver_locations
 	
 	def loop_wavefield(self, nt):
-		source_amplitudes = deepwave.wavelets.ricker(self.freq, nt, self.dt, self.peak_time).reshape(1, 1, -1).to(dtype=torch.float64, device=self.device)
+		source_amplitudes = deepwave.wavelets.ricker(self.freq, nt, self.dt, self.peak_time).reshape(1, 1, -1).to(dtype=self.dtype, device=self.device)
 		outputs = scalar(self.vp, self.dx, self.dt,
 						 source_amplitudes=source_amplitudes,
 						 source_locations=self.source_locations,
@@ -202,9 +204,10 @@ class LoopSeismicWavefield:
 #-----------------------------------------------------------------------------------------#
 
 class Migration:
-	def __init__(self, vp, npy_folder, device, dx, dt, source_amplitudes, receiver_locations, freq):
+	def __init__(self, vp, npy_folder, dtype, device, dx, dt, source_amplitudes, receiver_locations, freq):
 		self.vp = vp
 		self.npy_folder = npy_folder
+		self.dtype = dtype
 		self.device = device
 		self.dx = dx
 		self.dt = dt
@@ -241,13 +244,14 @@ class Migration:
 		observed_scatter_files = [os.path.join(self.npy_folder,
 								  f'shot_pixel_{i * shot_interval:04d}.npy') for i in range(n_shots)]
 		observed_scatter_masked = [torch.tensor(np.load(f),
+								   dtype=self.dtype,
 								   device=self.device) for f in observed_scatter_files]
 
 		for epoch in tqdm(range(n_epochs), desc="Epochs"):
 			epoch_loss = 0
 			for shot_index in tqdm(range(n_shots), desc="Shots", leave=False):
 				current_source_position = shot_index * shot_interval
-				source_locations = torch.zeros(1, 1, 2, dtype=torch.long, device=self.device)
+				source_locations = torch.zeros(1, 1, 2, dtype=self.dtype, device=self.device)
 				source_locations[0, 0, 0] = current_source_position
 
 				out = scalar_born(
@@ -275,7 +279,7 @@ class Migration:
 		migration_data -= np.mean(migration_data)
 		migration_data /= np.max(np.abs(migration_data))
 		# migration_data_clipped = migration_data[:, 130:] # Clip top image
-		migration_data_clipped = migration_data[:, 95:] # Clip top image
+		migration_data_clipped = migration_data[:, 52:] # Clip top image
 		print("Shape of migration_data_clipped:", migration_data_clipped.shape)
 		vmax_clip, vmin_clip = U.clip(migration_data_clipped, clip_percent)
 		plt.figure()
@@ -285,7 +289,7 @@ class Migration:
 		plt.title('Migration')
 		if save:
 			save_name = output_folder + "/" + output_migration_name
-			plt.savefig(save_name, format='png', bbox_inches='tight', pad_inches=0, transparent=True)
+			plt.savefig(save_name, format='svg', bbox_inches='tight', pad_inches=0, transparent=True)
 			print("Migration saved as:", save_name)
 		plt.show()
 
